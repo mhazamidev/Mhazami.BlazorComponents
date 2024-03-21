@@ -1,0 +1,579 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Aban" xml:space="preserve">
+    <value>Ağustos</value>
+  </data>
+  <data name="Ago" xml:space="preserve">
+    <value>önce</value>
+  </data>
+  <data name="ahundred" xml:space="preserve">
+    <value>yüz</value>
+  </data>
+  <data name="And" xml:space="preserve">
+    <value>ve</value>
+  </data>
+  <data name="Attention" xml:space="preserve">
+    <value>Dikkat</value>
+  </data>
+  <data name="Azar" xml:space="preserve">
+    <value>Eylül</value>
+  </data>
+  <data name="Bahman" xml:space="preserve">
+    <value>Kasım</value>
+  </data>
+  <data name="billion" xml:space="preserve">
+    <value>milyar</value>
+  </data>
+  <data name="Blank" xml:space="preserve">
+    <value>Boşluk</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Kapat</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Oluşturmak</value>
+  </data>
+  <data name="DataFetchFailed" xml:space="preserve">
+    <value>Veri Getirme Başarısız</value>
+  </data>
+  <data name="DataFetchFailed1" xml:space="preserve">
+    <value>Veri Getirme Başarısız</value>
+  </data>
+  <data name="Day" xml:space="preserve">
+    <value>Gün(ler)</value>
+  </data>
+  <data name="DeleteDoc" xml:space="preserve">
+    <value>Dokümanı sil</value>
+  </data>
+  <data name="DeleteDoc1" xml:space="preserve">
+    <value>Dokümanı sil</value>
+  </data>
+  <data name="DeleteMessage" xml:space="preserve">
+    <value>Aşağıdaki bilgileri silmek istiyor musunuz?</value>
+  </data>
+  <data name="DeleteRecord" xml:space="preserve">
+    <value>Kaydı Sil</value>
+  </data>
+  <data name="DeleteRecord1" xml:space="preserve">
+    <value>Kaydı Sil</value>
+  </data>
+  <data name="DeleteSuccessMessage" xml:space="preserve">
+    <value>Bilgiler başarıyla silindi.</value>
+  </data>
+  <data name="DeletingDataFailed" xml:space="preserve">
+    <value>Veri Silinemedi</value>
+  </data>
+  <data name="DeletingDataFailed1" xml:space="preserve">
+    <value>Veri Silinemedi</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Detaylar</value>
+  </data>
+  <data name="Dey" xml:space="preserve">
+    <value>Ekim</value>
+  </data>
+  <data name="Direction" xml:space="preserve">
+    <value>ltr</value>
+  </data>
+  <data name="Disable" xml:space="preserve">
+    <value>Etkin değil</value>
+  </data>
+  <data name="Disabled" xml:space="preserve">
+    <value>Bu adreste istenen konferans devre dışı bırakılır</value>
+  </data>
+  <data name="Duplicated" xml:space="preserve">
+    <value>Yinelenen</value>
+  </data>
+  <data name="Duplicated1" xml:space="preserve">
+    <value>Yinelenen</value>
+  </data>
+  <data name="eight" xml:space="preserve">
+    <value>sekiz</value>
+  </data>
+  <data name="Eighteen" xml:space="preserve">
+    <value>onsekiz</value>
+  </data>
+  <data name="eighthundred" xml:space="preserve">
+    <value>sekiz yüz</value>
+  </data>
+  <data name="Eighty" xml:space="preserve">
+    <value>seksen</value>
+  </data>
+  <data name="Eleven" xml:space="preserve">
+    <value>onbir</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Hata</value>
+  </data>
+  <data name="ErrorInDelete" xml:space="preserve">
+    <value>Bilgiler silinirken bir hata oluştu.</value>
+  </data>
+  <data name="ErrorInEdit" xml:space="preserve">
+    <value>Bilgileri düzenlerken bir hata oluştu.</value>
+  </data>
+  <data name="ErrorInInsert" xml:space="preserve">
+    <value>Bilgiler eklenirken bir hata oluştu.</value>
+  </data>
+  <data name="ErrorInSearch" xml:space="preserve">
+    <value>Bilgi aranırken bir hata oluştu.</value>
+  </data>
+  <data name="Esfand" xml:space="preserve">
+    <value>Aralık</value>
+  </data>
+  <data name="example" xml:space="preserve">
+    <value>örnek</value>
+  </data>
+  <data name="farvardin" xml:space="preserve">
+    <value>Ocak</value>
+  </data>
+  <data name="Fifteen" xml:space="preserve">
+    <value>on beş</value>
+  </data>
+  <data name="Fifty" xml:space="preserve">
+    <value>elli</value>
+  </data>
+  <data name="FillField" xml:space="preserve">
+    <value>Lütfen doldurun : {0}</value>
+  </data>
+  <data name="FillField1" xml:space="preserve">
+    <value>Lütfen doldurun : {0}</value>
+  </data>
+  <data name="Five" xml:space="preserve">
+    <value>beş</value>
+  </data>
+  <data name="fivehundred" xml:space="preserve">
+    <value>beş yüz</value>
+  </data>
+  <data name="Float" xml:space="preserve">
+    <value>left</value>
+  </data>
+  <data name="Forty" xml:space="preserve">
+    <value>kırk</value>
+  </data>
+  <data name="Four" xml:space="preserve">
+    <value>dört</value>
+  </data>
+  <data name="fourhundred" xml:space="preserve">
+    <value>dört yüz</value>
+  </data>
+  <data name="fourteen" xml:space="preserve">
+    <value>ondört</value>
+  </data>
+  <data name="Friday" xml:space="preserve">
+    <value>Cuma</value>
+  </data>
+  <data name="GetUnSuccessMessage" xml:space="preserve">
+    <value>İstenen bilgi mevcut değil.</value>
+  </data>
+  <data name="Help" xml:space="preserve">
+    <value>Yardım</value>
+  </data>
+  <data name="Hour" xml:space="preserve">
+    <value>Saat(ler)</value>
+  </data>
+  <data name="Information" xml:space="preserve">
+    <value>Bilgi</value>
+  </data>
+  <data name="InsertDoc" xml:space="preserve">
+    <value>Belge Ekle</value>
+  </data>
+  <data name="InsertDoc1" xml:space="preserve">
+    <value>Belge Ekle</value>
+  </data>
+  <data name="InsertRecord" xml:space="preserve">
+    <value>Kayıt Ekle</value>
+  </data>
+  <data name="InsertRecord1" xml:space="preserve">
+    <value>Kayıt Ekle</value>
+  </data>
+  <data name="InsertSuccessMessage" xml:space="preserve">
+    <value>Bilgiler başarıyla eklendi.</value>
+  </data>
+  <data name="InversAligment" xml:space="preserve">
+    <value>Right</value>
+  </data>
+  <data name="Item" xml:space="preserve">
+    <value>öğe</value>
+  </data>
+  <data name="Khordad" xml:space="preserve">
+    <value>Mart</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Giriş</value>
+  </data>
+  <data name="Login1" xml:space="preserve">
+    <value>Giriş</value>
+  </data>
+  <data name="LogOut" xml:space="preserve">
+    <value>LogOut</value>
+  </data>
+  <data name="M" xml:space="preserve">
+    <value>M</value>
+  </data>
+  <data name="mainsource" xml:space="preserve">
+    <value>ana kaynak</value>
+  </data>
+  <data name="Medium" xml:space="preserve">
+    <value>Orta</value>
+  </data>
+  <data name="Mehr" xml:space="preserve">
+    <value>Temmuz</value>
+  </data>
+  <data name="MessaageTitle" xml:space="preserve">
+    <value>Mesaj Başlığı</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Mesaj</value>
+  </data>
+  <data name="Million" xml:space="preserve">
+    <value>million</value>
+  </data>
+  <data name="Minute" xml:space="preserve">
+    <value>Dakika</value>
+  </data>
+  <data name="Monday" xml:space="preserve">
+    <value>Pazartesi</value>
+  </data>
+  <data name="Mordad" xml:space="preserve">
+    <value>Mayıs</value>
+  </data>
+  <data name="NationalCodenotvalid" xml:space="preserve">
+    <value>TC numarası 10 karakter olmalıdır</value>
+  </data>
+  <data name="Negative" xml:space="preserve">
+    <value>Negatif</value>
+  </data>
+  <data name="Nine" xml:space="preserve">
+    <value>dokuz</value>
+  </data>
+  <data name="ninehundred" xml:space="preserve">
+    <value>dokuz yüz</value>
+  </data>
+  <data name="Nineteen" xml:space="preserve">
+    <value>on dokuz</value>
+  </data>
+  <data name="ninety" xml:space="preserve">
+    <value>doksan</value>
+  </data>
+  <data name="Nokeyisprovided" xml:space="preserve">
+    <value>{0} tablosu için anahtar sağlanmadı</value>
+  </data>
+  <data name="Nokeyisprovided1" xml:space="preserve">
+    <value>{0} tablosu için anahtar sağlanmadı</value>
+  </data>
+  <data name="NotValidinputparameterCount" xml:space="preserve">
+    <value>Giriş parametrelerinin sayısı, tuşların sayısına eşit değil ({0})</value>
+  </data>
+  <data name="NotValidinputparameterCount1" xml:space="preserve">
+    <value>Giriş parametrelerinin sayısı, tuşların sayısına eşit değil ({0})</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>Tamam</value>
+  </data>
+  <data name="One" xml:space="preserve">
+    <value>bir</value>
+  </data>
+  <data name="OperationDoneFailed" xml:space="preserve">
+    <value>Operasyon başarısız!</value>
+  </data>
+  <data name="OperationDoneSucceed" xml:space="preserve">
+    <value>Operasyon başarılı</value>
+  </data>
+  <data name="OrDibehesht" xml:space="preserve">
+    <value>Şubat</value>
+  </data>
+  <data name="Originaltext" xml:space="preserve">
+    <value>Orjinal metin</value>
+  </data>
+  <data name="past" xml:space="preserve">
+    <value>geçmiş</value>
+  </data>
+  <data name="Point" xml:space="preserve">
+    <value>Nokta</value>
+  </data>
+  <data name="Question" xml:space="preserve">
+    <value>Soru</value>
+  </data>
+  <data name="remained" xml:space="preserve">
+    <value>kaldı</value>
+  </data>
+  <data name="Saturday" xml:space="preserve">
+    <value>Cumartesi</value>
+  </data>
+  <data name="Saturday1" xml:space="preserve">
+    <value>Cumartesi</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Kaydet</value>
+  </data>
+  <data name="SaveAndNew" xml:space="preserve">
+    <value>Kaydet ve yeni</value>
+  </data>
+  <data name="SaveAndNewLanguage" xml:space="preserve">
+    <value>Kaydet ve yeni dil</value>
+  </data>
+  <data name="SaveChanges" xml:space="preserve">
+    <value>Değişiklikleri Kaydet</value>
+  </data>
+  <data name="SavingDataFailed" xml:space="preserve">
+    <value>Veri Kaydetme Başarısız</value>
+  </data>
+  <data name="SavingDataFailed1" xml:space="preserve">
+    <value>Veri Kaydetme Başarısız</value>
+  </data>
+  <data name="Score" xml:space="preserve">
+    <value>Puan</value>
+  </data>
+  <data name="Security" xml:space="preserve">
+    <value>Güvenlik</value>
+  </data>
+  <data name="SecurityWarning" xml:space="preserve">
+    <value>Güvenlik uyarısı!</value>
+  </data>
+  <data name="Seven" xml:space="preserve">
+    <value>yedi</value>
+  </data>
+  <data name="sevenhundred" xml:space="preserve">
+    <value>yedi yüz</value>
+  </data>
+  <data name="Seventeen" xml:space="preserve">
+    <value>on yedi</value>
+  </data>
+  <data name="Seventy" xml:space="preserve">
+    <value>yetmiş</value>
+  </data>
+  <data name="Shahrivar" xml:space="preserve">
+    <value>Haziran</value>
+  </data>
+  <data name="Six" xml:space="preserve">
+    <value>altı</value>
+  </data>
+  <data name="sixhundred" xml:space="preserve">
+    <value>altı yüz</value>
+  </data>
+  <data name="Sixteen" xml:space="preserve">
+    <value>on altı</value>
+  </data>
+  <data name="sixty" xml:space="preserve">
+    <value>altmış</value>
+  </data>
+  <data name="Strong" xml:space="preserve">
+    <value>Güçlü</value>
+  </data>
+  <data name="Succeed" xml:space="preserve">
+    <value>Başarılı</value>
+  </data>
+  <data name="Sunday" xml:space="preserve">
+    <value>Pazar</value>
+  </data>
+  <data name="system" xml:space="preserve">
+    <value>sistemi</value>
+  </data>
+  <data name="system1" xml:space="preserve">
+    <value>sistemi</value>
+  </data>
+  <data name="ten" xml:space="preserve">
+    <value>on</value>
+  </data>
+  <data name="There_is_no_item_to_ display" xml:space="preserve">
+    <value>Görüntülenecek {0} yok</value>
+  </data>
+  <data name="Thirteen" xml:space="preserve">
+    <value>onüç</value>
+  </data>
+  <data name="thirty" xml:space="preserve">
+    <value>otuz</value>
+  </data>
+  <data name="Thiskeyhasalreadybeenadded" xml:space="preserve">
+    <value>Bu anahtar zaten eklendi</value>
+  </data>
+  <data name="Thousand" xml:space="preserve">
+    <value>bin</value>
+  </data>
+  <data name="Three" xml:space="preserve">
+    <value>üç</value>
+  </data>
+  <data name="threehundred" xml:space="preserve">
+    <value>üç yüz</value>
+  </data>
+  <data name="Thursday" xml:space="preserve">
+    <value>Perşembe</value>
+  </data>
+  <data name="Tir" xml:space="preserve">
+    <value>Nisan</value>
+  </data>
+  <data name="Trillion" xml:space="preserve">
+    <value>Trilyon</value>
+  </data>
+  <data name="Tuesday" xml:space="preserve">
+    <value>Salı</value>
+  </data>
+  <data name="twelve" xml:space="preserve">
+    <value>on iki</value>
+  </data>
+  <data name="twenty" xml:space="preserve">
+    <value>yirmi</value>
+  </data>
+  <data name="Two" xml:space="preserve">
+    <value>iki</value>
+  </data>
+  <data name="twohundred" xml:space="preserve">
+    <value>iki yüz</value>
+  </data>
+  <data name="Unsucceed" xml:space="preserve">
+    <value>Başarısız</value>
+  </data>
+  <data name="UpdateDoc" xml:space="preserve">
+    <value>Dokümanı Güncelle</value>
+  </data>
+  <data name="UpdateDoc1" xml:space="preserve">
+    <value>Dokümanı Güncelle</value>
+  </data>
+  <data name="UpdateField" xml:space="preserve">
+    <value>Alanı Güncelle</value>
+  </data>
+  <data name="UpdateField1" xml:space="preserve">
+    <value>Alanı Güncelle</value>
+  </data>
+  <data name="UpdateSuccessMessage" xml:space="preserve">
+    <value>Bilgiler başarıyla düzenlendi</value>
+  </data>
+  <data name="Values" xml:space="preserve">
+    <value>Değerler</value>
+  </data>
+  <data name="VeryStrong" xml:space="preserve">
+    <value>Çok güçlü</value>
+  </data>
+  <data name="VeryWeak" xml:space="preserve">
+    <value>Çok zayıf</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>Uyarı</value>
+  </data>
+  <data name="Weak" xml:space="preserve">
+    <value>Zayıf</value>
+  </data>
+  <data name="Wednesday" xml:space="preserve">
+    <value>Çarşamba</value>
+  </data>
+  <data name="zero" xml:space="preserve">
+    <value>sıfır</value>
+  </data>
+</root>
