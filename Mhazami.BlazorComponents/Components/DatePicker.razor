@@ -1,0 +1,198 @@
+<div class="datepicker">
+    <i class="far fa-calendar"></i>
+    <input id="@($"c{Title}")" type="text" @bind-value="@Value" readonly placeholder="&nbsp;" @onclick="Open" autocomplete="off" class="form-control" />
+    @if (!hide)
+    {
+
+        <div class="datepicker-container">
+            <div class="close-datepicker" @onclick="Open">
+                <i class="fas fa-times"></i>
+            </div>
+            <div class="datepicker-card">
+                <div class="datepicker-header">
+                    @if (DatePickerType != DatePickerType.Time)
+                    {
+                        <select @bind-value="Year" @bind-value:event="oninput" @onchange="ChangeYear" class="form-control select-dropdown text-center">
+                            @foreach (KeyValuePair<int, string> item in Years)
+                            {
+                                <option selected="@(Years.IndexOf(item)==0)" value="@item.Key">@item.Value</option>
+                            }
+                        </select>
+                    }
+                </div>
+                @switch (DatePickerType)
+                {
+                    case DatePickerType.DateTime:
+                    case DatePickerType.Date:
+                    case DatePickerType.Day:
+                        <div class="datepicker-body">
+                            <div class="datepicker-body-header">
+                                <span @onclick="()=>ChangeMonth(-1)" class="month-arrow">
+                                    <i class="fas fa-angle-left"></i>
+                                </span>
+                                <h6 class="m-0">@($"{DayNameShort} {DayNum} {MonthNameShort}")</h6>
+                                <span @onclick="()=>ChangeMonth(1)" class="month-arrow">
+                                    <i class="fas fa-angle-right"></i>
+                                </span>
+                            </div>
+                            <table class="datepicker-table" style="width:100%; text-align:center">
+                                <thead>
+                                    <tr>
+                                        @switch (CalendarType)
+                                        {
+                                            case CalendarType.Hijri:
+                                                @foreach (var item in EnumUtils.ConvertEnumToIEnumerable<HijriDaysShort>())
+                                                {
+                                                    <th>
+                                                        @(item.Key.ToEnum<HijriDaysShort>().GetDescription())
+                                                    </th>
+                                                }
+                                                break;
+                                            case CalendarType.Shamsi:
+                                                @foreach (var item in EnumUtils.ConvertEnumToIEnumerable<ShamsiDaysShort>())
+                                                {
+                                                    <th>
+                                                        @(item.Key.ToEnum<ShamsiDaysShort>().GetDescription())
+                                                    </th>
+                                                }
+                                                break;
+                                            case CalendarType.Turkish:
+                                                @foreach (var item in EnumUtils.ConvertEnumToIEnumerable<TurkishDaysShort>())
+                                                {
+                                                    <th>
+                                                        @(item.Key.ToEnum<TurkishDaysShort>().GetDescription())
+                                                    </th>
+                                                }
+                                                break;
+                                            case CalendarType.Gregorian:
+                                            default:
+                                                @foreach (var item in EnumUtils.ConvertEnumToIEnumerable<GregorianDaysShort>())
+                                                {
+                                                    <th>
+                                                        @(item.Key.ToEnum<GregorianDaysShort>().GetDescription())
+                                                    </th>
+                                                }
+                                                break;
+                                        }
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @for (int i = 0; i < 6; i++)
+                                    {
+                                        <tr>
+                                            @for (int j = i * 7 + 1; j <= DateOfMonth.Count(); j++)
+                                            {
+                                                if (DateOfMonth[j - 1] == new DateTime(1, 1, 1))
+                                                {
+                                                    <td></td>
+                                                }
+                                                else
+                                                {
+                                                    var cDate = DateOfMonth[j - 1];
+                                                    @if (StartDate != null && cDate <= StartDate)
+                                                    {
+                                                        <td class="disabled-date @(cDate.Date==Today.Date?"today":"")">
+                                                            <span>
+                                                                @(GetDayByCalendarType(DateOfMonth[j - 1]))
+                                                            </span>
+                                                        </td>
+                                                    }
+                                                    else if (ToDate != null && ToDate < cDate)
+                                                    {
+                                                        <td class="disabled-date @(cDate.Date==Today.Date?"today":"")">
+                                                            <span>
+                                                                @(GetDayByCalendarType(DateOfMonth[j - 1]))
+                                                            </span>
+                                                        </td>
+                                                    }
+                                                    else
+                                                    {
+                                                        <td @onclick="()=>SelectDate(cDate)" class="hover-date @(cDate.Date==Today.Date?"today":"") @(CurrentValue.Day==DateOfMonth[j - 1].Day?"selected-date":"")">
+                                                            <span>
+                                                                @(GetDayByCalendarType(DateOfMonth[j - 1]))
+                                                            </span>
+                                                        </td>
+                                                    }
+
+                                                }
+                                                if (j % 7 == 0)
+                                                    break;
+                                            }
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                        break;
+                    case DatePickerType.Time:
+                        <div class="datepicker-table-box time-container">
+                            <div class="hour-container">
+                                <label class="control-label">Saat :</label>
+                                <select @bind-value="Hour" @bind-value:event="oninput" @onchange="(e)=>ChangeHour(e)" class="form-control select-dropdown">
+                                    @for (int i = 0; i < 24; i++)
+                                    {
+                                        <option value="@i">
+                                            @(i.ToString().Length == 2 ? $"{i}" : $"0{i}")
+                                        </option>
+                                    }
+                                </select>
+                            </div>
+
+                            <div class="minute-container">
+                                <label class="control-label">Dakika :</label>
+                                <select @bind-value="Minute" @bind-value:event="oninput" @onchange="(e)=>ChangeMinute(e)" class="form-control select-dropdown">
+                                    @for (int i = 0; i < 60; i++)
+                                    {
+                                        <option value="@i">
+                                            @(i.ToString().Length == 2 ? $"{i}" : $"0{i}")
+                                        </option>
+                                    }
+                                </select>
+                            </div>
+
+                        </div>
+                        break;
+                    case DatePickerType.Month:
+                        <div class="datepicker-table-box months-container">
+                            @switch (CalendarType)
+                            {
+                                case CalendarType.Hijri:
+                                    @foreach (var month in EnumUtils.ConvertEnumToIEnumerable<HijriMonths>())
+                                    {
+                                        <span @onclick="()=>ChangeMonthForOnlyMonthMode((byte)month.Key.ToEnum<HijriMonths>())">@month.Value</span>
+                                    }
+                                    break;
+                                case CalendarType.Turkish:
+                                    @foreach (var month in EnumUtils.ConvertEnumToIEnumerable<TurkishMonths>())
+                                    {
+                                        <span @onclick="()=>ChangeMonthForOnlyMonthMode((byte)month.Key.ToEnum<TurkishMonths>())">@month.Value</span>
+                                    }
+                                    break;
+                                case CalendarType.Shamsi:
+                                    @foreach (var month in EnumUtils.ConvertEnumToIEnumerable<ShamsiMonths>())
+                                    {
+                                        <span @onclick="()=>ChangeMonthForOnlyMonthMode((byte)month.Key.ToEnum<ShamsiMonths>())">@month.Value</span>
+                                    }
+                                    break;
+                                case CalendarType.German:
+                                    @foreach (var month in EnumUtils.ConvertEnumToIEnumerable<GermanMonths>())
+                                    {
+                                        <span @onclick="()=>ChangeMonthForOnlyMonthMode((byte)month.Key.ToEnum<GermanMonths>())">@month.Value</span>
+                                    }
+                                    break;
+                                case CalendarType.Gregorian:
+                                default:
+                                    @foreach (var month in EnumUtils.ConvertEnumToIEnumerable<GregorianMonths>())
+                                    {
+                                        <span @onclick="()=>ChangeMonthForOnlyMonthMode((byte)month.Key.ToEnum<GregorianMonths>())">@month.Value</span>
+                                    }
+                                    break;
+                            }
+                        </div>
+                        break;
+
+                }
+            </div>
+        </div>
+    }
+</div>
