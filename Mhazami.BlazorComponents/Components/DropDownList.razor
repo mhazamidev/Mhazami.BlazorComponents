@@ -1,0 +1,35 @@
+
+<style>
+    @@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css');
+</style>
+
+
+<div class="mh-drp-box @CustomClass" id="@Id">
+    @if (hide)
+    {
+        <i class="fa-solid fa-chevron-down" @onclick="Toggle"></i>
+    }
+    else
+    {
+        <i class="fa-solid fa-chevron-up" @onclick="Toggle"></i>
+    }
+    <input type="text" readonly class="mh-drp" @bind-value="@SelectedValue" @bind-value:event="oninput" @onclick="Toggle" />
+    @if (!hide)
+    {
+        <div class="mh-drp-options">
+            @if (Items != null && Items.Any())
+            {
+                @foreach (var item in _items.Items)
+                {
+                    <div class="mh-drp-item" @onclick="()=>SelectItem(item)">
+                        @if (MuliSelect)
+                        {
+                            <input type="checkbox" disabled="@(SelectableList.Any(x=>x.Value == item.Value))" checked="@(SelectedList.Any(x => x.Value == item.Value))" />
+                        }
+                        <span>@item.Text</span>
+                    </div>
+                }
+            }
+        </div>
+    }
+</div>

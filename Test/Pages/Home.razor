@@ -2,6 +2,14 @@
 @using Mhazami.BlazorComponents.Components
 @using Mhazami.BlazorComponents.Models
 
+
+<div style="width:250px;margin-bottom:20px">
+    <label style="padding:5px 0">Only Year Format</label>
+    <DropDownList Items="@people" TextField="Name" SelectedItems="@person" DisabledItems="@personable" ValueField="Id" MuliSelect="true" />
+</div>
+
+
+@*
 <h1>German Date Picker</h1>
 <div style="width:250px;margin-bottom:20px">
     <label style="padding:5px 0">Only Date Format</label>
@@ -27,3 +35,5 @@
     <label style="padding:5px 0">Only Year Format</label>
     <DatePicker CalendarType="CalendarType.German" DatePickerType="DatePickerType.Year" />
 </div>
+ *@
+
