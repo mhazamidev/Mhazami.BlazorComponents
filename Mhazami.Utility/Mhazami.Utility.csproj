@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Authors>Mohammad Azami</Authors>
-    <Version>2.0.1</Version>
+    <Version>2.0.2</Version>
     <PackageIcon>nuget-package-128x128.png</PackageIcon>
   </PropertyGroup>
 
@@ -19,10 +19,6 @@
 
   <ItemGroup>
     <PackageReference Include="System.Drawing.Common" Version="8.0.3" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Mhazami.Resources\Mhazami.Resources.csproj" />
   </ItemGroup>
 
 </Project>

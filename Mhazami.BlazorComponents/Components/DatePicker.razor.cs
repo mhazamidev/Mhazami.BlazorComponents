@@ -2,7 +2,9 @@
 using Mhazami.BlazorComponents.Utility;
 using Mhazami.Utility;
 using Microsoft.AspNetCore.Components;
+using System;
 using System.Globalization;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Mhazami.BlazorComponents.Components;
 
@@ -19,13 +21,10 @@ public partial class DatePicker
     [Parameter] public CalendarType CalendarType { get; set; } = CalendarType.Gregorian;
     [Parameter] public bool AutoClose { get; set; } = true;
 
-    private DatePickerInfo dateInfo = new DatePickerInfo();
     private bool hide = true;
     private int Year = DateTime.Now.Year;
-    private int MonthNum = 1;
 
     private string MonthNameShort = "";
-    private string MonthName = "";
     private string DayNum = "";
     private string DayName = "";
     private string DayNameShort = "";
@@ -36,6 +35,8 @@ public partial class DatePicker
     private List<KeyValuePair<int, string>> Years = new();
     private int Hour = 0;
     private int Minute = 0;
+    private string MinuteTitle = "";
+    private string HourTitle = "";
 
 
     protected override async Task OnInitializedAsync()
@@ -58,6 +59,32 @@ public partial class DatePicker
         StateHasChanged();
     }
 
+    void SetTitles()
+    {
+        switch (CalendarType)
+        {
+            case CalendarType.Hijri:
+                MinuteTitle = "دقيقة";
+                HourTitle = "ساعة";
+                break;
+            case CalendarType.Shamsi:
+                MinuteTitle = "دقیقه";
+                HourTitle = "ساعت";
+                break;
+            case CalendarType.Turkish:
+                MinuteTitle = "Dakika";
+                HourTitle = "Saat";
+                break;
+            case CalendarType.German:
+                MinuteTitle = "Minute";
+                HourTitle = "Stunde";
+                break;
+            case CalendarType.Gregorian:
+                MinuteTitle = "Hour";
+                HourTitle = "Minute";
+                break;
+        }
+    }
     void SetFormat(DateTime date)
     {
         string datetime = "";
@@ -108,12 +135,12 @@ public partial class DatePicker
                 break;
 
         }
+        SetTitles();
     }
     void Open() => hide = !hide;
     private void PrepareDate(DateTime dateOfValue, bool applyAutoClose = true)
     {
         Year = dateOfValue.Year;
-        MonthNum = dateOfValue.Month;
         DayNum = GetDayByCalendarType(dateOfValue);
         GetDayInfo(dateOfValue);
         GetMonthInfo(dateOfValue);
@@ -255,7 +282,7 @@ public partial class DatePicker
     void ChangeMonth(int num)
     {
         CurrentValue = CurrentValue.AddMonths(num);
-        PrepareDate(CurrentValue);
+        PrepareDate(CurrentValue, false);
     }
     async Task ChangeMonthForOnlyMonthMode(short num)
     {
@@ -279,7 +306,7 @@ public partial class DatePicker
         CurrentValue = CurrentValue.AddYears(dif);
         await OnChangeAction.InvokeAsync(CurrentValue);
         await OnChangeActionById.InvokeAsync(new KeyValuePair<string, DateTime>(Id, CurrentValue));
-        PrepareDate(CurrentValue);
+        PrepareDate(CurrentValue, DatePickerType == DatePickerType.Year);
     }
     async Task ChangeHour(ChangeEventArgs args)
     {

@@ -24,25 +24,25 @@ namespace Mhazami.Utility
             switch (GetDayOfWeek(dateTime))
             {
                 case (int)DayOfWeek.Sunday:
-                    str = Resources.ProjectsFoundation.Sunday;
+                    str = "Sunday";
                     break;
                 case (int)DayOfWeek.Monday:
-                    str = Resources.ProjectsFoundation.Monday;
+                    str = "Monday";
                     break;
                 case (int)DayOfWeek.Tuesday:
-                    str = Resources.ProjectsFoundation.Tuesday;
+                    str = "Tuesday";
                     break;
                 case (int)DayOfWeek.Wednesday:
-                    str = Resources.ProjectsFoundation.Wednesday;
+                    str = "Wednesday";
                     break;
                 case (int)DayOfWeek.Thursday:
-                    str = Resources.ProjectsFoundation.Thursday;
+                    str = "Thursday";
                     break;
                 case (int)DayOfWeek.Friday:
-                    str = Resources.ProjectsFoundation.Friday;
+                    str = "Friday";
                     break;
                 case (int)DayOfWeek.Saturday:
-                    str = Resources.ProjectsFoundation.Saturday;
+                    str = "Saturday";
                     break;
             }
             int dayOfMonth = GetDayOfMonth(dateTime);
@@ -178,12 +178,12 @@ namespace Mhazami.Utility
                     {
                         FirstDayOfWeek = DayOfWeek.Saturday,
                         DayNames =
-                            new[] { Resources.ProjectsFoundation.Sunday, Resources.ProjectsFoundation.Monday, Resources.ProjectsFoundation.Tuesday, Resources.ProjectsFoundation.Wednesday, Resources.ProjectsFoundation.Thursday, Resources.ProjectsFoundation.Friday, Resources.ProjectsFoundation.Saturday },
+                            new[] { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" },
                         MonthNames =
                             new[]
                                                  {
-                                                     Resources.ProjectsFoundation.farvardin, Resources.ProjectsFoundation.OrDibehesht, Resources.ProjectsFoundation.Khordad, Resources.ProjectsFoundation.Tir, Resources.ProjectsFoundation.Mordad, Resources.ProjectsFoundation.Shahrivar,Resources.ProjectsFoundation.Mehr,
-                                                     Resources.ProjectsFoundation.Aban, Resources.ProjectsFoundation.Azar, Resources.ProjectsFoundation.Dey, Resources.ProjectsFoundation.Bahman, Resources.ProjectsFoundation.Esfand, ""
+                                                     "فروردین", "اردیبهشت", "خرداد","تیر", "مرداد", "شهریور","مهر",
+                                                    "آبان", "آذر", "دی", "بهمن", "اسفند", ""
                                                  }
                     }
                 };
@@ -274,7 +274,7 @@ namespace Mhazami.Utility
             return input.Date.AddDays(-dayOfWeek);
         }
 
-        public static int GetWeeks(DateTime start, DateTime end,bool roundtodown=true)
+        public static int GetWeeks(DateTime start, DateTime end, bool roundtodown = true)
         {
             start = GetStartOfWeek(start);
             end = GetStartOfWeek(end);
@@ -332,7 +332,7 @@ namespace Mhazami.Utility
             var sDate = GetDateToGregorianDate(StartDate);
             var eDate = GetDateToGregorianDate(EndDate);
             return GetDays(sDate, eDate);
-            
+
         }
 
         public static void ParseDate(string Date, ref int Year, ref int Month, ref int Day)
@@ -378,40 +378,40 @@ namespace Mhazami.Utility
             switch (monthId)
             {
                 case 1:
-                    str = Resources.ProjectsFoundation.farvardin;
+                    str = "فروردین";
                     break;
                 case 2:
-                    str = Resources.ProjectsFoundation.OrDibehesht;
+                    str = "اردیبهشت";
                     break;
                 case 3:
-                    str = Resources.ProjectsFoundation.Khordad;
+                    str = "خرداد";
                     break;
                 case 4:
-                    str = Resources.ProjectsFoundation.Tir;
+                    str = "تیر";
                     break;
                 case 5:
-                    str = Resources.ProjectsFoundation.Mordad;
+                    str = "مرداد";
                     break;
                 case 6:
-                    str = Resources.ProjectsFoundation.Shahrivar;
+                    str = "شهریور";
                     break;
                 case 7:
-                    str = Resources.ProjectsFoundation.Mehr;
+                    str = "مهر";
                     break;
                 case 8:
-                    str = Resources.ProjectsFoundation.Aban;
+                    str = "آبان";
                     break;
                 case 9:
-                    str = Resources.ProjectsFoundation.Azar;
+                    str = "آذر";
                     break;
                 case 10:
-                    str = Resources.ProjectsFoundation.Dey;
+                    str = "دی";
                     break;
                 case 11:
-                    str = Resources.ProjectsFoundation.Bahman;
+                    str = "بهمن";
                     break;
                 case 12:
-                    str = Resources.ProjectsFoundation.Esfand;
+                    str = "اسفند";
                     break;
             }
             return str;
@@ -437,23 +437,23 @@ namespace Mhazami.Utility
                 if (hourDiff == 0)
                 {
                     if (minuteDiff == 0) minuteDiff++;
-                    result = string.Format("{0} " + Resources.ProjectsFoundation.Minute + " ", minuteDiff);
+                    result = string.Format("{0} Minute(s) ", minuteDiff);
                 }
                 else
                 {
-                    result = string.Format("{0} " + Resources.ProjectsFoundation.Hour + " ", hourDiff);
+                    result = string.Format("{0} Hour(s) ", hourDiff);
                     if (minuteDiff > 0)
-                        result += " " + Resources.ProjectsFoundation.And + " " + minuteDiff + " " + Resources.ProjectsFoundation.Minute + " ";
+                        result += " And " + minuteDiff + " Minute(s) ";
                 }
             }
             else
             {
-                result = string.Format("{0} " + Resources.ProjectsFoundation.Day + " ", dayDiff);
+                result = string.Format("{0} Day(s) ", dayDiff);
                 if (hourDiff > 0 && dayDiff < 5)
-                    result += " " + Resources.ProjectsFoundation.And + " " + hourDiff + " " + Resources.ProjectsFoundation.Hour + " ";
+                    result += " And " + hourDiff + " Hour(s) ";
             }
 
-            return (result.Contains("-") ? result.Replace("-", "") + Resources.ProjectsFoundation.remained : result + Resources.ProjectsFoundation.past);
+            return (result.Contains("-") ? result.Replace("-", "") + "remained" : result + "past");
         }
         public static TimeSpan GetDifferenceBetweenDateTime(string greaterDate, string greaterTime, string lowerDate, string lowerTime)
         {
@@ -484,19 +484,19 @@ namespace Mhazami.Utility
             switch (dayOfWeek)
             {
                 case 1:
-                    return Resources.ProjectsFoundation.Saturday;
+                    return "Saturday";
                 case 2:
-                    return Resources.ProjectsFoundation.Sunday;
+                    return "Sunday";
                 case 3:
-                    return Resources.ProjectsFoundation.Monday;
+                    return "Monday";
                 case 4:
-                    return Resources.ProjectsFoundation.Tuesday;
+                    return "Tuesday";
                 case 5:
-                    return Resources.ProjectsFoundation.Wednesday;
+                    return "Wednesday";
                 case 6:
-                    return Resources.ProjectsFoundation.Thursday;
+                    return "Thursday";
                 case 7:
-                    return Resources.ProjectsFoundation.Friday;
+                    return "Friday";
                 default:
                     return string.Empty;
             }
@@ -621,7 +621,7 @@ namespace Mhazami.Utility
             DateRange range = new DateRange
             {
                 Start = new DateTime(date.Year, date.Month, date.Day, 0, 0, 0),
-                End = (new DateTime(date.Year, date.Month, date.Day, 23, 59, 59)).AddDays((day-1))
+                End = (new DateTime(date.Year, date.Month, date.Day, 23, 59, 59)).AddDays((day - 1))
             };
             return range;
         }
@@ -681,7 +681,7 @@ namespace Mhazami.Utility
             };
             range.End = range.Start.AddDays(7).AddSeconds(-1);
             return range;
-            
+
 
 
         }

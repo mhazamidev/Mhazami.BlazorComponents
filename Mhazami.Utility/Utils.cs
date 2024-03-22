@@ -1,4 +1,5 @@
 ﻿using System.Collections.Specialized;
+using System.ComponentModel;
 using System.Data;
 using System.Globalization;
 using System.IO.Compression;
@@ -196,17 +197,17 @@ public static class Utils
     public enum PasswordStrength : byte
     {
         None = 0,
-        [MhazamiDescriptionAttribute("Blank", Type = typeof(Resources.ProjectsFoundation))]
+        [MhazamiDescription("Blank")]
         Blank = 1,
-        [MhazamiDescriptionAttribute("VeryWeak", Type = typeof(Resources.ProjectsFoundation))]
+        [MhazamiDescription("Very Weak")]
         VeryWeak = 2,
-        [MhazamiDescriptionAttribute("Weak", Type = typeof(Resources.ProjectsFoundation))]
+        [MhazamiDescription("Weak")]
         Weak = 3,
-        [MhazamiDescriptionAttribute("Medium", Type = typeof(Resources.ProjectsFoundation))]
+        [MhazamiDescription("Medium")]
         Medium = 4,
-        [MhazamiDescriptionAttribute("Strong", Type = typeof(Resources.ProjectsFoundation))]
+        [MhazamiDescription("Strong")]
         Strong = 5,
-        [MhazamiDescriptionAttribute("VeryStrong", Type = typeof(Resources.ProjectsFoundation))]
+        [MhazamiDescription("VeryStrong")]
         VeryStrong = 6
     }
 
@@ -456,26 +457,26 @@ public static class Utils
 
     #region Number
 
-    private static readonly string[] yekan = { Resources.ProjectsFoundation.zero, Resources.ProjectsFoundation.One, Resources.ProjectsFoundation.Two, Resources.ProjectsFoundation.Three, Resources.ProjectsFoundation.Four, Resources.ProjectsFoundation.Five, Resources.ProjectsFoundation.Six, Resources.ProjectsFoundation.Seven, Resources.ProjectsFoundation.eight, Resources.ProjectsFoundation.Nine };
-    private static readonly string[] dahgan = { "", "", Resources.ProjectsFoundation.twenty, Resources.ProjectsFoundation.thirty, Resources.ProjectsFoundation.Forty, Resources.ProjectsFoundation.Fifty, Resources.ProjectsFoundation.sixty, Resources.ProjectsFoundation.Seventy, Resources.ProjectsFoundation.Eighty, Resources.ProjectsFoundation.ninety };
+    private static readonly string[] yekan = { "zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "eight", "Nine" };
+    private static readonly string[] dahgan = { "", "", "twenty", "thirty", "Forty", "Fifty", "sixty", "Seventy", "Eighty", "ninety" };
     private static readonly string[] dahyek =
     {
-        Resources.ProjectsFoundation.ten, Resources.ProjectsFoundation.Eleven, Resources.ProjectsFoundation.twelve, Resources.ProjectsFoundation.Thirteen, Resources.ProjectsFoundation.fourteen, Resources.ProjectsFoundation.Fifteen, Resources.ProjectsFoundation.Sixteen,
-        Resources.ProjectsFoundation.Seventeen, Resources.ProjectsFoundation.Eighteen,Resources.ProjectsFoundation.Nineteen
+        "ten","Eleven","twelve", "Thirteen", "fourteen", "Fifteen", "Sixteen",
+        "Seventeen", "Eighteen","Nineteen"
     };
     private static readonly string[] sadgan =
     {
-        "", Resources.ProjectsFoundation.ahundred, Resources.ProjectsFoundation.twohundred,Resources.ProjectsFoundation.threehundred, Resources.ProjectsFoundation.fourhundred, Resources.ProjectsFoundation.fivehundred,Resources.ProjectsFoundation.sixhundred, Resources.ProjectsFoundation.sevenhundred,
-        Resources.ProjectsFoundation.eighthundred, Resources.ProjectsFoundation.ninehundred
+        "", "one hundred", "two hundred","three hundred", "four hundred", "five hundred","six hundred", "seven hundred",
+        "eight hundred", "nine hundred"
     };
-    private static readonly string[] basex = { "", Resources.ProjectsFoundation.Thousand, Resources.ProjectsFoundation.Million, Resources.ProjectsFoundation.billion, Resources.ProjectsFoundation.Trillion };
+    private static readonly string[] basex = { "", "Thousand", "Million", "billion", "Trillion" };
     private static string GetNumberName(int num)
     {
         string s = "";
         int d12 = num % 100;
         int d3 = num / 100;
         if (d3 != 0)
-            s = sadgan[d3] + " " + Resources.ProjectsFoundation.And + " ";
+            s = sadgan[d3] + " And ";
         if ((d12 >= 10) && (d12 <= 19))
         {
             s = s + dahyek[d12 - 10];
@@ -484,10 +485,10 @@ public static class Utils
         {
             int d2 = d12 / 10;
             if (d2 != 0)
-                s = s + dahgan[d2] + " " + Resources.ProjectsFoundation.And + " ";
+                s = s + dahgan[d2] + " And ";
             int d1 = d12 % 10;
             if (d1 != 0)
-                s = s + yekan[d1] + " " + Resources.ProjectsFoundation.And + " ";
+                s = s + yekan[d1] + " And ";
             s = s.Substring(0, s.Length - 3);
         }
         return s;
@@ -517,10 +518,10 @@ public static class Utils
         {
             int b = Int32.Parse(snum.Substring(i * 3, 3));
             if (b != 0)
-                stotal = stotal + GetNumberName(b) + " " + basex[L - i] + " " + Resources.ProjectsFoundation.And + " ";
+                stotal = stotal + GetNumberName(b) + " " + basex[L - i] + " And ";
         }
         stotal = stotal.Substring(0, stotal.Length - 3);
-        return isnegative ? " " + Resources.ProjectsFoundation.Negative + " " + stotal : stotal;
+        return isnegative ? " Negative " + stotal : stotal;
     }
     public static string ConvertNumberToChar(this double num)
     {
@@ -539,10 +540,10 @@ public static class Utils
         var result = string.Empty;
         var patrs = snum.Split('.');
         result = patrs[0].ToInt().ConvertNumberToChar();
-        result += " " + Resources.ProjectsFoundation.Point + " ";
+        result += " Point ";
         result += patrs[1].ToInt().ConvertNumberToChar();
-        result += Math.Pow(10, patrs[1].Length).ConvertNumberToChar().Replace(Resources.ProjectsFoundation.One, "").Trim() + Resources.ProjectsFoundation.M;
-        return isnegative ? (" " + Resources.ProjectsFoundation.Negative + " " + result) : result;
+        result += Math.Pow(10, patrs[1].Length).ConvertNumberToChar().Replace("One", "").Trim() + "th";
+        return isnegative ? (" Negative " + result) : result;
     }
 
     #endregion
