@@ -2,7 +2,7 @@
 
 public record class SelectList
 {
-    public List<SelectListItem> Items { get; init; }
+    public List<SelectListItem> Items { get; init; } = new();
     public SelectListItem SelectedValue { get; init; }
 
     public SelectList(IEnumerable<object> items, string valuefield, string textfield, object? selectedvalue = null)
@@ -31,4 +31,5 @@ public record class SelectList
             };
         }
     }
+    public SelectList() { }
 }

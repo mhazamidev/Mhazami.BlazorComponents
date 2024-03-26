@@ -5,6 +5,7 @@ namespace Test.Pages;
 public partial class Home
 {
     private List<Person> people = Person.Model();
+    private List<Person> people2 = Person.Model2();
     private List<TreeNode> person = new List<TreeNode>
     {
       new TreeNode{Id = "1", Title = "Iran",HasChildren =false},
@@ -20,7 +21,15 @@ public partial class Home
       new TreeNode{Id = "4",Title ="USA"},
     };
 
+    void Onchecked(List<string> value)
+    {
 
+    }
+
+    void OnSelect(string value)
+    {
+
+    }
 }
 
 
@@ -36,6 +45,17 @@ public class Person
             new Person { Id = 1,Name="John"},
             new Person { Id = 2,Name="Sarah"},
             new Person { Id = 3,Name="Jack"},
+            new Person { Id = 4,Name="Jili"},
+            new Person { Id = 5,Name="Tomas"},
+        };
+    }
+
+    public static List<Person> Model2()
+    {
+        return new List<Person>
+        {
+            new Person { Id = 1,Name="John"},
+          
             new Person { Id = 4,Name="Jili"},
             new Person { Id = 5,Name="Tomas"},
         };

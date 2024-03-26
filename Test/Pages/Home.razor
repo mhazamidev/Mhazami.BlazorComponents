@@ -2,10 +2,32 @@
 @using Mhazami.BlazorComponents.Components
 @using Mhazami.BlazorComponents.Models
 
+
+
+
 <div style="width:250px;margin-bottom:20px">
+    <CheckboxList Items="@people"
+                  TextField="Name"
+                  OnSelect="OnSelect"
+                  OnSelectList="Onchecked"
+                  DisabledList="@people2"
+                  ValueField="Id" />
+</div>
+
+
+
+
+@* <div style="width:250px;margin-bottom:20px">
+    <Checkbox IsChecked="true" DisplayName="Iran" OnChecked="Onchecked" />
+</div>
+ *@
+
+
+
+@* <div style="width:250px;margin-bottom:20px">
     <label style="padding:5px 0">Only Year Format</label>
     <TreeView Model="@person" HasCheckBox="true" />
-</div>
+</div> *@
 
 @* <div style="width:250px;margin-bottom:20px">
     <label style="padding:5px 0">Only Year Format</label>

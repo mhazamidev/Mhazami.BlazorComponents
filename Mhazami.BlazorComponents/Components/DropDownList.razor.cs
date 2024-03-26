@@ -17,7 +17,7 @@ public partial class DropDownList
     [Parameter] public string CustomClass { get; set; }
     [Parameter] public object Value { get; set; }
     [Parameter] public bool MuliSelect { get; set; } = false;
-    private SelectList _items;
+    private SelectList _items = new();
     private bool hide = true;
     private List<SelectListItem> SelectedList = new();
     private List<SelectListItem> SelectableList = new();

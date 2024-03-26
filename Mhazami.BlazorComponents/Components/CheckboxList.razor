@@ -1,0 +1,11 @@
+@if (_items is not null)
+{
+    @foreach (var item in _items.Items)
+    {
+        <div class="mh-checkbox @CssClass">
+            <input type="checkbox" checked="@(_selectedItems is not null && _selectedItems.Items.Any(x=>x.Value==item.Value))"
+                   disabled="@(_disabledItems is not null && _disabledItems.Items.Any(x=>x.Value==item.Value))" @onchange="()=>OnSelectCheck(item)" />
+            <label>@item.Text</label>
+        </div>
+    }
+}

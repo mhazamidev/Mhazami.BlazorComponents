@@ -1,0 +1,7 @@
+.mh-checkbox {
+    display: flex;
+}
+
+    .mh-checkbox > label {
+        padding-left: 5px;
+    }
