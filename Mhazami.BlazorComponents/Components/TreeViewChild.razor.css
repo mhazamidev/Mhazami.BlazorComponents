@@ -1,0 +1,15 @@
+.mh-children-list {
+    list-style: none;
+}
+
+
+.mh-treeview-icon {
+    padding-right: 10px;
+    width: 20px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.mh-treeview-check {
+    margin-right: 7px;
+}

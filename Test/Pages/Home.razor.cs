@@ -1,18 +1,26 @@
-﻿namespace Test.Pages;
+﻿using Mhazami.BlazorComponents.Models;
+
+namespace Test.Pages;
 
 public partial class Home
 {
     private List<Person> people = Person.Model();
-    private List<Person> person = new List<Person>
+    private List<TreeNode> person = new List<TreeNode>
     {
-       new Person { Id = 2,Name="Sarah"},
-            new Person { Id = 3,Name="Jack"},
+      new TreeNode{Id = "1", Title = "Iran",HasChildren =false},
+      new TreeNode{Id = "2",Title ="Germany",HasChildren = false},
+      new TreeNode{Id = "3",Title ="Canada", HasChildren = true,Children = new List<TreeNode>
+      {
+        new TreeNode{Id = "5", Title = "Tehran",HasChildren =true,Children = new List < TreeNode > {
+           new TreeNode{Id = "7", Title = "Darband",HasChildren =false}
+        }},
+      new TreeNode{Id = "6",Title ="Isfahan",HasChildren = false},
+      } 
+      },
+      new TreeNode{Id = "4",Title ="USA"},
     };
 
-    private List<Person> personable = new List<Person>
-    {
-       new Person { Id = 5,Name="Tomas"}, 
-    };
+
 }
 
 

@@ -1,0 +1,64 @@
+@if (Model != null)
+{
+    <ul class="mh-children-list">
+        @foreach (var node in Model)
+        {
+            <li>
+                <div @onmouseover="()=>{ node.ShowIcons = true; }" @onmouseout="()=>{node.ShowIcons = false;}">
+                    @if (node.HasChildren)
+                    {
+                        <span class="mh-treeview-icon" @onclick="()=>Expend(node.Id)">
+                            @if (node.IsExpanded)
+                            {
+                                @((MarkupString)UnExpendedIcon)
+                            }
+                            else
+                            {
+                                @((MarkupString)ExpendedIcon)
+                            }
+                        </span>
+                    }
+                    else
+                    {
+                        <span class="mh-treeview-icon">
+                        </span>
+                    }
+                    @if (HasCheckBox)
+                    {
+                        <input type="checkbox" checked="@CheckedList.Exists(x=>x.Id==node.Id)" class="mh-treeview-check" id="@node.Id" @onchange="()=>CheckedNode(node)" />
+                    }
+                    <span>
+                        @node.Title
+                    </span>
+                    @if (Updateble && node.ShowIcons)
+                    {
+                        <span class="net-treeview-window-icons-box">
+                            <span class="net-treeview-window-icon tree-icon-edit" @onclick="()=>UpdateNode(node)">
+                                <i class="fal fa-edit"></i>
+                            </span>
+                            @if (Removable)
+                            {
+                                <span class="net-treeview-window-icon tree-icon-delete" @onclick="()=>DeleteNode(node)">
+                                    <i class="fas fa-trash-alt"></i>
+                                </span>
+                            }
+                        </span>
+                    }
+                </div>
+                @if (node.HasChildren && (node.IsExpanded || ExpendAll))
+                {
+                    <TreeViewChild Model="node.Children"
+                               IsOndemand="@IsOndemand"
+                               ExpendedIcon="@ExpendedIcon"
+                               UnExpendedIcon="@UnExpendedIcon"
+                               OndemandEvent="Expend"
+                               HasCheckBox="@HasCheckBox"
+                               CheckedNodeCallback="CheckedNode"
+                               Parent="@node.Id"
+                               CheckedList="@CheckedList"
+                               Nodes="@Nodes" />
+                }
+            </li>
+        }
+    </ul>
+}
