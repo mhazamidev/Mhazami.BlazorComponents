@@ -16,20 +16,17 @@ public partial class Home
            new TreeNode{Id = "7", Title = "Darband",HasChildren =false}
         }},
       new TreeNode{Id = "6",Title ="Isfahan",HasChildren = false},
-      } 
+      }
       },
       new TreeNode{Id = "4",Title ="USA"},
     };
 
-    void Onchecked(List<string> value)
+    void Onchecked(string value)
     {
 
     }
 
-    void OnSelect(string value)
-    {
-
-    }
+  
 }
 
 
@@ -55,7 +52,7 @@ public class Person
         return new List<Person>
         {
             new Person { Id = 1,Name="John"},
-          
+
             new Person { Id = 4,Name="Jili"},
             new Person { Id = 5,Name="Tomas"},
         };

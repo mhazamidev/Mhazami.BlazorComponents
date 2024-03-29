@@ -1,0 +1,31 @@
+.mh-radio {
+    display: flex;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.mh-radio-horizontal {
+    flex-direction: column;
+}
+
+.mh-radio-item {
+    display: flex;
+    margin: 0 5px;
+}
+
+    .mh-radio-item > label {
+        padding-left: 5px;
+    }

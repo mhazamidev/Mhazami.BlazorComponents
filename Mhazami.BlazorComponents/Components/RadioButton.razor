@@ -1,0 +1,13 @@
+@if (Items is not null)
+{
+    <div class="mh-radio @(DirectionOrder == DirectionOrder.Vertical?"mh-radio-horizontal":"") @CssClass">
+        @foreach (var item in _items.Items)
+        {
+            <div class="mh-radio-item" @onclick="()=>OnSelect(item.Value)">
+                <input type="radio" name="@Name" value="@item.Value" checked="@(item.Value==Value)" @onchange="()=>OnSelect(item.Value)" />
+                <label>@item.Text</label>
+            </div>
+        }
+    </div>
+
+}

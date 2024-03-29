@@ -40,17 +40,16 @@ public partial class DropDownList
                         Text = x.Text
                     }).ToList();
 
-                SelectedValue = string.Join(',', SelectedList.Select(x => x.Text));
-
-                if (DisabledItems is not null && DisabledItems.Any())
+                SelectedValue = string.Join(',', SelectedList.Select(x => x.Text));              
+            }
+            if (DisabledItems is not null && DisabledItems.Any())
+            {
+                SelectableList = new SelectList(DisabledItems, ValueField, TextField).Items
+                .Select(x => new SelectListItem
                 {
-                    SelectableList = new SelectList(DisabledItems, ValueField, TextField).Items
-                    .Select(x => new SelectListItem
-                    {
-                        Value = x.Value,
-                        Text = x.Text
-                    }).ToList();
-                }
+                    Value = x.Value,
+                    Text = x.Text
+                }).ToList();
             }
         }
     }

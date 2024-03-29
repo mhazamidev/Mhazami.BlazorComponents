@@ -4,7 +4,23 @@ namespace Mhazami.BlazorComponents.Models;
 
 
 
+public enum SwitchShape
+{
+    Square,
+    circle
+}
 
+public enum Alignment
+{
+    RTL,
+    LTR
+}
+
+public enum DirectionOrder
+{
+    Vertical,
+    Horizontal
+}
 public enum DatePickerType
 {
     DateTime,

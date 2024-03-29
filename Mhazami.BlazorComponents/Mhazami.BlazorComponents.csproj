@@ -8,11 +8,11 @@
     <Authors>Mohammad Azami</Authors>
     <Description>Blazor Components</Description>
     <PackageIcon>nuget-package-128x128.png</PackageIcon>
-    <PackageTags>Blazor Components, DatePicker,Turkish DatePicker, Shamsi DatePicker,Hijri DatePicker, German DatePicker,TreeView,DropDownList,DropDownListMultiSelect,Checkbox,CheckboxList</PackageTags>
+    <PackageTags>Blazor Components, DatePicker,Turkish DatePicker, Shamsi DatePicker,Hijri DatePicker, German DatePicker,TreeView,DropDownList,DropDownListMultiSelect,Checkbox,CheckboxList,RadioButtom,SwitchButton</PackageTags>
     <PackAsTool>False</PackAsTool>
     <NeutralLanguage>en</NeutralLanguage>
-    <Version>8.2.2</Version>
-    <PackageReleaseNotes>Added CheckboxList</PackageReleaseNotes>
+    <Version>8.3.2</Version>
+    <PackageReleaseNotes>Added SwitchButton</PackageReleaseNotes>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <Title>Tafi</Title>
     <PackageId>Tafi</PackageId>
