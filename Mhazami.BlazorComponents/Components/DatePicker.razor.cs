@@ -286,7 +286,9 @@ public partial class DatePicker
     }
     async Task ChangeMonthForOnlyMonthMode(short num)
     {
-        CurrentValue = DateTimeUtils.CreateDateFromTime(CurrentValue.Year, num, CurrentValue.Day, CurrentValue.Hour, CurrentValue.Minute, CurrentValue.Second);
+        var days = Enumerable.Range(1, DateTime.DaysInMonth(CurrentValue.Year, num));
+        var day = days.Last() < CurrentValue.Day ? days.Last() : CurrentValue.Day;
+        CurrentValue = DateTimeUtils.CreateDateFromTime(CurrentValue.Year, num, day, CurrentValue.Hour, CurrentValue.Minute, CurrentValue.Second);
         PrepareDate(CurrentValue);
         await OnChangeAction.InvokeAsync(CurrentValue);
         await OnChangeActionById.InvokeAsync(new KeyValuePair<string, DateTime>(Id, CurrentValue));
@@ -352,9 +354,11 @@ public partial class DatePicker
         switch (CalendarType)
         {
             case CalendarType.Hijri:
+                m = m <= 5 ? m + 2 : m == 6 ? 1 : 2;
                 var ht = (HijriDaysShort)m;
                 return ht.GetDescription();
             case CalendarType.Shamsi:
+                m = m <= 5 ? m + 2 : m == 6 ? 1 : 2;
                 var t = (ShamsiDaysShort)m;
                 return t.GetDescription();
             case CalendarType.Turkish:
