@@ -1,0 +1,21 @@
+
+
+
+<div id="@Id" class="mh-extended @CssClass">
+    <div class="mh-extended-header" @onclick="()=>{IsExtended= !IsExtended;}">
+        @if (!string.IsNullOrEmpty(Title))
+        {
+            @Title
+        }
+        else
+        {
+            @Header
+        }
+    </div>
+    @if (IsExtended)
+    {
+        <div class="mh-extended-body">
+            @Body
+        </div>
+    }
+</div>

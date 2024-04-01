@@ -18,4 +18,10 @@ public partial class Checkbox
             await OnChecked.InvokeAsync(value);
         }
     }
+
+    async Task OnChangeLable()
+    {
+        IsChecked = !IsChecked;
+        await OnChecked.InvokeAsync(IsChecked);
+    }
 }

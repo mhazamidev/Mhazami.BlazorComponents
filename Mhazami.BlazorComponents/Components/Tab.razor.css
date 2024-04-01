@@ -1,0 +1,33 @@
+.mh-tab {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.mh-tab-header {
+    width: 100%;
+    display: flex;
+    background: #ccc;
+}
+
+.mh-tab-title {
+    padding: 10px 7.5px;
+    border-right: 1px solid #ddd;
+    cursor: pointer;
+}
+
+    .mh-tab-title:hover {
+        background: #716f6f;
+        color: #fff;
+    }
+.mh-tab-title-selected {
+    background: #716f6f;
+    color: #fff;
+}
+
+    .mh-tab-body {
+        padding: 20px 10px 10px;
+        border-right: 1px solid #ddd;
+        border-left: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+    }

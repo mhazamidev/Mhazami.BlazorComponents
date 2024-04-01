@@ -27,6 +27,7 @@ public partial class RadioButton
     {
         Value = val;
         await OnChange.InvokeAsync(val);
+        StateHasChanged();
     }
 
     bool ValidateParameters()

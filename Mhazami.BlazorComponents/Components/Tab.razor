@@ -1,0 +1,30 @@
+@inherits TabComponentBase
+
+
+<CascadingValue Value="Items">
+    @ChildContent
+</CascadingValue>
+
+
+
+@if (Items is not null)
+{
+    <div class="mh-tab">
+        <div class="mh-tab-header">
+            @foreach (var tab in Tabs)
+            {
+                <div class="mh-tab-title @(tab==SelectedTab?"mh-tab-title-selected":"")" @onclick="()=>{SelectedTab = tab;}">@tab</div>
+            }
+        </div>
+        @foreach (var item in Items)
+        {
+            @if (item.Key == SelectedTab)
+            {
+                <div class="mh-tab-body">
+                    @((RenderFragment)item.Value)
+                </div>
+            }
+
+        }
+    </div>
+}
