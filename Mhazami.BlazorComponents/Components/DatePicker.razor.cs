@@ -163,9 +163,19 @@ public partial class DatePicker
                 var hh = hc.GetHour(date);
                 var hmin = hc.GetMinute(date);
                 var hs = hc.GetSecond(date);
-                DateOfMonth = Enumerable.Range(1, hc.GetDaysInMonth(date.Year, month))
-             .Select(day => hc.ToDateTime(hy, hm, day, hh, hmin, hs, 0))
-             .ToList();
+                var test = Enumerable.Range(1, hc.GetDaysInMonth(date.Year, month));
+                try
+                {
+                    DateOfMonth = Enumerable.Range(1, hc.GetDaysInMonth(date.Year, month))
+                     .Select(day => hc.ToDateTime(hy, hm, day, hh, hmin, hs, 0))
+                     .ToList();
+                }
+                catch (Exception)
+                {
+                    DateOfMonth = Enumerable.Range(1, hc.GetDaysInMonth(date.Year, month)).SkipLast(1)
+                                       .Select(day => hc.ToDateTime(hy, hm, day, hh, hmin, hs, 0))
+                                       .ToList();
+                }
                 MonthNameShort = GetMonthNameShort(hm);
                 break;
             case CalendarType.Shamsi:

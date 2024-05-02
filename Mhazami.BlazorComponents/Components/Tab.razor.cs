@@ -7,6 +7,7 @@ public partial class Tab : TabComponentBase
 {
     [Parameter] public RenderFragment ChildContent { get; set; }
     [Parameter] public string SelectedTab { get; set; }
+    [Parameter] public string CssClass { get; set; }
     private List<string> Tabs = new();
 
 

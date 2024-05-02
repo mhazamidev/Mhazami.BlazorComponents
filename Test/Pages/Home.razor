@@ -4,6 +4,16 @@
 
 
 
+
+
+@* 
+<ProgressBar ProgressBarWidth="50"/> *@
+
+
+
+
+
+@* 
 <Tab SelectedTab="Group 2">
     <TabItem Title="Group 1">
         <p>
@@ -65,29 +75,17 @@
             and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
         </p>
     </TabItem>
-</Tab>
+</Tab> *@
 
 
 
+@* <LoadingButton Text="Save" EnableLoading="true" /> *@
+
+@* <SwitchButton Value="true" Style="SwitchShape.circle" />
+<SwitchButton Value="true" Style="SwitchShape.Square" />
 
 
-
-
-
-
-
-
-
-
-
-
-@* <LoadingButton Text="Save" EnableLoading="true" />
-
-<SwitchButton Value="true" Style="SwitchShape.circle" />
-<SwitchButton Value="true" Style="SwitchShape.Square" /> *@
-
-
-@* <ExtendedPanel Title="Near east technology">
+<ExtendedPanel Title="Near east technology">
     <Body>
         <p>
             Lorem Ipsum is simply dummy text of the printing and typesetting industry.
@@ -121,8 +119,8 @@
             and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
         </p>
     </Body>
-</ExtendedPanel> *@
-
+</ExtendedPanel>
+ *@
 
 @*
 <RadioButton Items="@people" Name="test" TextField="Name" ValueField="Id" OnChange="Onchecked" Value="3" />
@@ -150,42 +148,19 @@
     <label style="padding:5px 0">Only Year Format</label>
     <TreeView Model="@person" HasCheckBox="true"  />
 </div> *@
-@*
-<div style="width:250px;margin-bottom:20px">
-    <label style="padding:5px 0">Only Year Format</label>
-    <DropDownList Items="@people" TextField="Name" ValueField="Id" MuliSelect="true" DisabledItems="@people2" />
-</div>
- *@
 
-@*
-<h1>German Date Picker</h1>
-<div style="width:250px;margin-bottom:20px">
-    <label style="padding:5px 0">Only Date Format</label>
-    <DatePicker CalendarType="CalendarType.German" DatePickerType="DatePickerType.Date" />
-</div>
-<div style="width:250px;margin-bottom:20px">
-    <label style="padding:5px 0">Date Time Format</label>
-    <DatePicker CalendarType="CalendarType.German" DatePickerType="DatePickerType.DateTime" />
-</div>
-<div style="width:250px;margin-bottom:20px">
-    <label style="padding:5px 0">Only Time Format</label>
-    <DatePicker CalendarType="CalendarType.German" DatePickerType="DatePickerType.Time" />
-</div>
-<div style="width:250px;margin-bottom:20px">
-    <label style="padding:5px 0">Only Month Format</label>
-    <DatePicker CalendarType="CalendarType.German" DatePickerType="DatePickerType.Month" />
-</div>
-<div style="width:250px;margin-bottom:20px">
-    <label style="padding:5px 0">Only Day of week Format</label>
-    <DatePicker CalendarType="CalendarType.German" DatePickerType="DatePickerType.Day" />
-</div>
-<div style="width:250px;margin-bottom:20px">
+@* <div style="width:250px;margin-bottom:20px">
     <label style="padding:5px 0">Only Year Format</label>
-    <DatePicker CalendarType="CalendarType.German" DatePickerType="DatePickerType.Year" />
-</div>
- *@
-
-@* <div style="width:280px;margin-bottom:20px">
-    <label style="padding:5px 0">Only Month Format</label>
-    <DatePicker CalendarType="CalendarType.Hijri" DatePickerType="DatePickerType.Date" />
+    <DropDownList Items="@people" TextField="Name" ValueField="Id" MuliSelect="true" SelectedItems="@people2" />
 </div> *@
+
+
+
+
+ <div style="width:250px;margin-bottom:20px">
+    <label style="padding:5px 0">Date Time Format</label>
+    <DatePicker CalendarType="CalendarType.Hijri" DatePickerType="DatePickerType.DateTime" />
+</div>
+
+
+

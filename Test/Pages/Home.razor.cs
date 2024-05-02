@@ -23,7 +23,7 @@ public partial class Home
 
     void Onchecked(string value)
     {
-
+        StateHasChanged();
     }
 
   
