@@ -11,8 +11,8 @@ public partial class DropDownList
     [Parameter] public IEnumerable<object> DisabledItems { get; set; }
     [Parameter] public string TextField { get; set; }
     [Parameter] public string ValueField { get; set; }
-    [Parameter] public EventCallback<object> onChangeAction { get; set; }
-    [Parameter] public EventCallback<IEnumerable<object>> onChangeMultiAction { get; set; }
+    [Parameter] public EventCallback<object> OnChangeAction { get; set; }
+    [Parameter] public EventCallback<IEnumerable<object>> OnChangeMultiAction { get; set; }
     [Parameter] public string Id { get; set; }
     [Parameter] public string CustomClass { get; set; }
     [Parameter] public object Value { get; set; }
@@ -63,7 +63,7 @@ public partial class DropDownList
         {
             SelectedValue = item.Text;
             hide = true;
-            await onChangeAction.InvokeAsync(item.Value);
+            await OnChangeAction.InvokeAsync(item.Value);
         }
         else
         {
@@ -74,7 +74,8 @@ public partial class DropDownList
                 SelectedList.Remove(target);
             SelectedValue = string.Join(',', SelectedList.Select(x => x.Text));
             SelectedItems = SelectedList;
-            await onChangeMultiAction.InvokeAsync(SelectedList.Select(x => x.Value));
+            var values = SelectedList.Select(x => x.Value).ToList();
+            await OnChangeMultiAction.InvokeAsync(values);
         }
     }
 

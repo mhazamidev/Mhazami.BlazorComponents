@@ -11,8 +11,8 @@
     <PackageTags>Blazor Components, DatePicker,Turkish DatePicker, Shamsi DatePicker,Hijri DatePicker, German DatePicker,TreeView,DropDownList,DropDownListMultiSelect,Checkbox,CheckboxList,RadioButtom,SwitchButton,LoadingButton,Tab,ExtendedPanel,ProgressBar</PackageTags>
     <PackAsTool>False</PackAsTool>
     <NeutralLanguage>en</NeutralLanguage>
-    <Version>8.4.3</Version>
-    <PackageReleaseNotes>fixed hijri datepicker</PackageReleaseNotes>
+    <Version>8.4.5</Version>
+    <PackageReleaseNotes>fixed DatePicker Time Format in English</PackageReleaseNotes>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <Title>Tafi</Title>
     <PackageId>Tafi</PackageId>

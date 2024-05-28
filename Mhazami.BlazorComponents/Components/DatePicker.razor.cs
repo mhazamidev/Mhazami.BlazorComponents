@@ -76,11 +76,11 @@ public partial class DatePicker
                 HourTitle = "Saat";
                 break;
             case CalendarType.German:
-                MinuteTitle = "Minute";
+                MinuteTitle = "Hour"; 
                 HourTitle = "Stunde";
                 break;
             case CalendarType.Gregorian:
-                MinuteTitle = "Hour";
+                MinuteTitle = "Minute";
                 HourTitle = "Minute";
                 break;
         }
