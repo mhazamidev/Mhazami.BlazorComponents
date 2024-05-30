@@ -37,7 +37,7 @@ public partial class DatePicker
     private int Minute = 0;
     private string MinuteTitle = "";
     private string HourTitle = "";
-
+    private string Result = "";
 
     protected override async Task OnInitializedAsync()
     {
@@ -46,7 +46,7 @@ public partial class DatePicker
         if (!string.IsNullOrEmpty(Value))
         {
             var dateOfValue = DateTime.Parse(Value);
-            Value = dateOfValue.Date.ToShortDateString();
+            Result = dateOfValue.Date.ToShortDateString();
             CurrentValue = dateOfValue;
             PrepareDate(dateOfValue);
         }
@@ -76,7 +76,7 @@ public partial class DatePicker
                 HourTitle = "Saat";
                 break;
             case CalendarType.German:
-                MinuteTitle = "Hour"; 
+                MinuteTitle = "Hour";
                 HourTitle = "Stunde";
                 break;
             case CalendarType.Gregorian:
@@ -112,26 +112,27 @@ public partial class DatePicker
                 dates = date.ToShortDateString();
                 break;
         }
-
         switch (DatePickerType)
         {
             case DatePickerType.DateTime:
-                Value = datetime;
+                Result = datetime;
                 break;
             case DatePickerType.Date:
-                Value = dates;
+                Result = dates;
                 break;
             case DatePickerType.Day:
-                Value = DayName;
+                Result = DayName;
                 break;
             case DatePickerType.Time:
-                Value = date.ToShortTimeString();
+                Result = $"{date.Hour}:{date.Minute}";
+                Hour = date.Hour;
+                Minute = date.Minute;
                 break;
             case DatePickerType.Month:
-                Value = $"{GetMonthName(date)} {year}";
+                Result = $"{GetMonthName(date)} {year}";
                 break;
             case DatePickerType.Year:
-                Value = year;
+                Result = year;
                 break;
 
         }
@@ -305,7 +306,7 @@ public partial class DatePicker
     }
     async Task SelectDate(DateTime date)
     {
-        Value = date.Date.ToShortDateString();
+        Result = date.Date.ToShortDateString();
         CurrentValue = date;
         await OnChangeAction.InvokeAsync(date);
         await OnChangeActionById.InvokeAsync(new KeyValuePair<string, DateTime>(Id, date));
@@ -326,7 +327,8 @@ public partial class DatePicker
         CurrentValue = DateTimeUtils.CreateDateFromTime(CurrentValue.Year, CurrentValue.Month, CurrentValue.Day, hour, CurrentValue.Minute, CurrentValue.Second);
         await OnChangeAction.InvokeAsync(CurrentValue);
         await OnChangeActionById.InvokeAsync(new KeyValuePair<string, DateTime>(Id, CurrentValue));
-        PrepareDate(CurrentValue, false);
+        Result = $"{CurrentValue.Hour}:{CurrentValue.Minute}";
+        Hour = CurrentValue.Hour;
     }
     async Task ChangeMinute(ChangeEventArgs args)
     {
@@ -334,7 +336,9 @@ public partial class DatePicker
         CurrentValue = DateTimeUtils.CreateDateFromTime(CurrentValue.Year, CurrentValue.Month, CurrentValue.Day, CurrentValue.Hour, minute, CurrentValue.Second);
         await OnChangeAction.InvokeAsync(CurrentValue);
         await OnChangeActionById.InvokeAsync(new KeyValuePair<string, DateTime>(Id, CurrentValue));
-        PrepareDate(CurrentValue);
+        Result = CurrentValue.ToShortTimeString();
+        Minute = CurrentValue.Minute;
+        //PrepareDate(CurrentValue);
     }
 
     string GetMonthNameShort(int m)

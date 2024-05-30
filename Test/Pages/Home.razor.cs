@@ -26,7 +26,10 @@ public partial class Home
         StateHasChanged();
     }
 
-  
+    void test(DateTime dateTime)
+    {
+
+    }
 }
 
 
