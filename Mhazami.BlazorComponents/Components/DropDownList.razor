@@ -13,12 +13,26 @@
     {
         <i class="fa-solid fa-chevron-up" @onclick="Toggle"></i>
     }
-    <input type="text" readonly class="mh-drp" @bind-value="@SelectedValue" @bind-value:event="oninput" @onclick="Toggle" />
+    @if (string.IsNullOrEmpty(SelectedValue) && !string.IsNullOrEmpty(DefaultTitle))
+    {
+        <input type="text" readonly class="mh-drp" value="@DefaultTitle" @onclick="Toggle" />
+    }
+    else
+    {
+        <input type="text" readonly class="mh-drp" @bind-value="@SelectedValue" @bind-value:event="oninput" @onclick="Toggle" />
+    }
     @if (!hide)
     {
         <div class="mh-drp-options">
-            @if (Items != null && Items.Any())
+            @if (!string.IsNullOrEmpty(DefaultTitle))
             {
+            <div class="mh-drp-item" @onclick="SelectNull">
+                <span>@DefaultTitle</span>
+            </div>
+            }
+
+            @if (Items != null && Items.Any())
+            {              
                 @foreach (var item in _items.Items)
                 {
                     <div class="mh-drp-item" @onclick="()=>SelectItem(item)">

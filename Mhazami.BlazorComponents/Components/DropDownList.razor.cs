@@ -11,6 +11,7 @@ public partial class DropDownList
     [Parameter] public IEnumerable<object> DisabledItems { get; set; }
     [Parameter] public string TextField { get; set; }
     [Parameter] public string ValueField { get; set; }
+    [Parameter] public string DefaultTitle { get; set; }
     [Parameter] public EventCallback<object> OnChangeAction { get; set; }
     [Parameter] public EventCallback<IEnumerable<object>> OnChangeMultiAction { get; set; }
     [Parameter] public string Id { get; set; }
@@ -26,10 +27,19 @@ public partial class DropDownList
     protected override async Task OnInitializedAsync()
     {
         await base.OnInitializedAsync();
+        Prepare();
+    }
+
+    protected override void OnParametersSet()
+    {
+        Prepare();
+    }
+    void Prepare()
+    {
         if (ValidateParameters())
         {
             _items = new SelectList(Items, ValueField, TextField);
-            if (!MuliSelect && Value is not null)
+            if (!MuliSelect && Value is not null && _items.SelectedValue is not null)
                 SelectedValue = _items.SelectedValue.Text;
             else if (SelectedItems is not null && SelectedItems.Any())
             {
@@ -40,7 +50,7 @@ public partial class DropDownList
                         Text = x.Text
                     }).ToList();
 
-                SelectedValue = string.Join(',', SelectedList.Select(x => x.Text));              
+                SelectedValue = string.Join(',', SelectedList.Select(x => x.Text));
             }
             if (DisabledItems is not null && DisabledItems.Any())
             {
@@ -78,7 +88,11 @@ public partial class DropDownList
             await OnChangeMultiAction.InvokeAsync(values);
         }
     }
-
+    void SelectNull()
+    {
+        SelectedValue = string.Empty;
+        hide = true;
+    }
     bool ValidateParameters()
     {
         if (string.IsNullOrEmpty(TextField) || string.IsNullOrEmpty(ValueField))

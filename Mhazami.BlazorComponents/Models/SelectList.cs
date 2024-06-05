@@ -30,6 +30,8 @@ public record class SelectList
                 Text = text
             };
         }
+       
+
     }
     public SelectList() { }
 }
