@@ -1,4 +1,6 @@
-﻿namespace Mhazami.BlazorComponents.Models;
+﻿using static System.Net.Mime.MediaTypeNames;
+
+namespace Mhazami.BlazorComponents.Models;
 
 public record class SelectList
 {
@@ -17,21 +19,19 @@ public record class SelectList
                 Value = value_field,
                 Text = text_field
             });
+
+            if (selectedvalue is not null && value_field == selectedvalue.ToString())
+            {
+                SelectedValue = new SelectListItem
+                {
+                    Value = value_field,
+                    Text = text_field
+                };
+            }
         }
         Items = result;
-
-        if (selectedvalue is not null)
-        {
-            var value = selectedvalue.GetType().GetProperty(valuefield).GetValue(selectedvalue)?.ToString();
-            var text = selectedvalue.GetType().GetProperty(textfield).GetValue(selectedvalue)?.ToString();
-            SelectedValue = new SelectListItem
-            {
-                Value = value,
-                Text = text
-            };
-        }
-       
-
     }
     public SelectList() { }
+
+
 }

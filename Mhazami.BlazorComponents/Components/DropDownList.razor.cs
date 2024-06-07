@@ -17,6 +17,7 @@ public partial class DropDownList
     [Parameter] public string Id { get; set; }
     [Parameter] public string CustomClass { get; set; }
     [Parameter] public object Value { get; set; }
+    private object? InternalValue;
     [Parameter] public bool MuliSelect { get; set; } = false;
     private SelectList _items = new();
     private bool hide = true;
@@ -38,7 +39,9 @@ public partial class DropDownList
     {
         if (ValidateParameters())
         {
-            _items = new SelectList(Items, ValueField, TextField);
+            if (InternalValue is not null)
+                Value = InternalValue;
+            _items = new SelectList(Items, ValueField, TextField, Value);
             if (!MuliSelect && Value is not null && _items.SelectedValue is not null)
                 SelectedValue = _items.SelectedValue.Text;
             else if (SelectedItems is not null && SelectedItems.Any())
@@ -62,6 +65,7 @@ public partial class DropDownList
                 }).ToList();
             }
         }
+        StateHasChanged();
     }
     void Toggle() => hide = !hide;
 
@@ -72,6 +76,7 @@ public partial class DropDownList
         if (!MuliSelect)
         {
             SelectedValue = item.Text;
+            InternalValue = item.Value;
             hide = true;
             await OnChangeAction.InvokeAsync(item.Value);
         }

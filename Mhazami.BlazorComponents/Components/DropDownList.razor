@@ -26,13 +26,13 @@
         <div class="mh-drp-options">
             @if (!string.IsNullOrEmpty(DefaultTitle))
             {
-            <div class="mh-drp-item" @onclick="SelectNull">
-                <span>@DefaultTitle</span>
-            </div>
+                <div class="mh-drp-item" @onclick="SelectNull">
+                    <span>@DefaultTitle</span>
+                </div>
             }
 
             @if (Items != null && Items.Any())
-            {              
+            {
                 @foreach (var item in _items.Items)
                 {
                     <div class="mh-drp-item" @onclick="()=>SelectItem(item)">
