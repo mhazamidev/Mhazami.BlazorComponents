@@ -11,12 +11,13 @@
     <PackageTags>Blazor Components, DatePicker,Turkish DatePicker, Shamsi DatePicker,Hijri DatePicker, German DatePicker,TreeView,DropDownList,DropDownListMultiSelect,Checkbox,CheckboxList,RadioButtom,SwitchButton,LoadingButton,Tab,ExtendedPanel,ProgressBar</PackageTags>
     <PackAsTool>False</PackAsTool>
     <NeutralLanguage>en</NeutralLanguage>
-    <Version>8.4.8</Version>
-    <PackageReleaseNotes>Updating DropdownList</PackageReleaseNotes>
+    <Version>8.4.9</Version>
+    <PackageReleaseNotes>Updating DropdownList &amp; DatePicker</PackageReleaseNotes>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <Title>Tafi</Title>
     <PackageId>Tafi</PackageId>
     <RepositoryUrl>https://github.com/mhazamidev/Mhazami.BlazorComponents</RepositoryUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
   <ItemGroup>
