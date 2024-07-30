@@ -93,9 +93,11 @@ public partial class DropDownList
             await OnChangeMultiAction.InvokeAsync(values);
         }
     }
-    void SelectNull()
+    async Task SelectNull()
     {
         SelectedValue = string.Empty;
+        InternalValue = string.Empty;
+        await OnChangeAction.InvokeAsync("");
         hide = true;
     }
     bool ValidateParameters()

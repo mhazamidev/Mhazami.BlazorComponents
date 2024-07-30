@@ -38,11 +38,16 @@ public partial class DatePicker
     private string MinuteTitle = "";
     private string HourTitle = "";
     private string Result = "";
+    private string OldDate = "";
 
     protected override async Task OnInitializedAsync()
     {
         await base.OnInitializedAsync();
+        StartProcess();
+    }
 
+    void StartProcess()
+    {
         if (!string.IsNullOrEmpty(Value))
         {
             var dateOfValue = DateTime.Parse(Value);
@@ -55,10 +60,15 @@ public partial class DatePicker
             CurrentValue = DateTime.Now;
             PrepareDate(CurrentValue);
         }
-
+        OldDate = Value;
         StateHasChanged();
     }
 
+    protected override void OnParametersSet()
+    {
+        if (OldDate != Value)
+            StartProcess();
+    }
     void SetTitles()
     {
         switch (CalendarType)
