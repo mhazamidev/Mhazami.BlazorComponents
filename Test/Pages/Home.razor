@@ -5,17 +5,26 @@
 
 
 
-
 @* 
-<ProgressBar ProgressBarWidth="50"/> *@
+
+<ProgressBar ProgressBarWidth="70"/> *@
 
 
 
 
 
-@* 
-<Tab SelectedTab="Group 2">
+
+@* <Tab SelectedTab="Group 2">
     <TabItem Title="Group 1">
+        <p>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+            when an unknown printer took a galley of type and scrambled it to make a type
+            specimen book. It has survived not only five centuries, but also the leap into
+            electronic typesetting, remaining essentially unchanged. It was popularised in
+            the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
+            and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+        </p>
         <p>
             Lorem Ipsum is simply dummy text of the printing and typesetting industry.
             Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
@@ -75,17 +84,17 @@
             and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
         </p>
     </TabItem>
-</Tab> *@
-
+</Tab>
+ *@
 
 
 @* <LoadingButton Text="Save" EnableLoading="true" /> *@
 
-@* <SwitchButton Value="true" Style="SwitchShape.circle" />
-<SwitchButton Value="true" Style="SwitchShape.Square" />
+@*  <SwitchButton Value="true" Style="SwitchShape.circle" />
+<SwitchButton Value="true" Style="SwitchShape.Square" /> *@
 
 
-<ExtendedPanel Title="Near east technology">
+@* <ExtendedPanel Title="Near east technology">
     <Body>
         <p>
             Lorem Ipsum is simply dummy text of the printing and typesetting industry.
@@ -119,21 +128,20 @@
             and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
         </p>
     </Body>
-</ExtendedPanel>
- *@
+</ExtendedPanel> *@
 
-@*
-<RadioButton Items="@people" Name="test" TextField="Name" ValueField="Id" OnChange="Onchecked" Value="3" />
 
- *@
-@* <div style="width:250px;margin-bottom:20px">
+
+@* <RadioButton Items="@people" Name="test" TextField="Name" ValueField="Id" OnChange="Onchecked" Value="3" /> *@
+
+@* 
+<div style="width:250px;margin-bottom:20px">
     <CheckboxList Items="@people"
                   TextField="Name"
-
                   SelectedList="@people2"
                   ValueField="Id" />
-</div> *@
-
+</div>
+ *@
 
 
 
@@ -142,25 +150,25 @@
 </div>
  *@
 
-
-
-@* <div style="width:250px;margin-bottom:20px">
-    <label style="padding:5px 0">Only Year Format</label>
-    <TreeView Model="@person" HasCheckBox="true"  />
-</div> *@
+@* 
 
 <div style="width:250px;margin-bottom:20px">
     <label style="padding:5px 0">Only Year Format</label>
-    <DropDownList Items="@people" TextField="Name" ValueField="Id"  />
+    <TreeView Model="@person" HasCheckBox="false"  />
 </div>
-
+ *@
+@* <div style="width:250px;margin-bottom:20px">
+    <label style="padding:5px 0">Only Year Format</label>
+    <DropDownList Items="@people" TextField="Name" MuliSelect="true" ValueField="Id"  />
+</div> *@
 
 
 @* 
+
  <div style="width:250px;margin-bottom:20px">
     <label style="padding:5px 0">Date Time Format</label>
-    <DatePicker CalendarType="CalendarType.Turkish" OnChangeAction="test" DatePickerType="DatePickerType.Time" Value="@(DateTime.Now.ToString())" />
-</div> *@
-
+    <DatePicker CalendarType="CalendarType.Turkish" OnChangeAction="test" DatePickerType="DatePickerType.Day"  />
+</div>
+ *@
 
 

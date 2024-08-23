@@ -1,0 +1,50 @@
+@if (TotalPages > 0)
+{
+
+    <ul class="page">
+        <li @onclick="()=>ChangePage(-1)" class="page__btn">&laquo;</li>
+        @if (TotalPages < 5)
+        {
+            @for (int p = 1; p <= TotalPages; p++)
+            {
+                var i = p;
+                <li @onclick="()=>SelectPage(i)" class="page__numbers @(CurrentPage==i?"active":"")">@p</li>
+            }
+
+        }
+        else
+        {
+            if (CurrentPage > 1)
+            {
+                <li @onclick="()=>SelectPage(1)" class="page__numbers">1</li>
+            }
+            @if (FirstPage > 1)
+            {
+                <li class="page__dots">...</li>
+                <li @onclick="()=>SelectPage(CurrentPage - 2)" class="page__numbers">@(CurrentPage - 2)</li>
+                <li @onclick="()=>SelectPage(CurrentPage - 1)" class="page__numbers">@(CurrentPage - 1)</li>
+            }
+            @if (CurrentPage != TotalPages)
+            {
+                <li @onclick="()=>SelectPage(CurrentPage)" class="page__numbers active">@CurrentPage</li>
+
+            }
+
+            @if (LastPage != 0)
+            {
+                <li @onclick="()=>SelectPage(CurrentPage+1)" class="page__numbers">@(CurrentPage + 1)</li>
+                @if (CurrentPage + 2 != TotalPages)
+                {
+                    <li @onclick="()=>SelectPage(CurrentPage+2)" class="page__numbers">@(CurrentPage + 2)</li>
+                    <li class="page__dots">...</li>
+                }
+            }
+
+            <li class="page__numbers @(CurrentPage == TotalPages?"active":"")" @onclick="()=>SelectPage(TotalPages)"> @TotalPages</li>
+        }
+
+
+
+        <li @onclick="()=>ChangePage(1)" class="page__btn">&raquo;</li>
+    </ul>
+}
