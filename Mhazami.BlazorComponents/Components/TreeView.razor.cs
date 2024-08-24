@@ -17,7 +17,7 @@ public partial class TreeView
     [Parameter] public List<TreeNode> CheckedList { get; set; } = new List<TreeNode>();
     [Parameter] public bool Updateble { get; set; } = false;
     [Parameter] public bool Removable { get; set; } = false;
-    [Parameter] public RenderFragment ModefyForm { get; set; }
+    [Parameter] public RenderFragment ChildContent { get; set; }
     [Parameter] public EventCallback<TreeNode> OnUpdate { get; set; }
     [Parameter] public EventCallback<TreeNode> OnDelete { get; set; }
     private List<TreeNode> MainNodes = new List<TreeNode>();

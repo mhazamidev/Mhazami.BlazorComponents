@@ -109,3 +109,8 @@
 .tree-delete-confirm-btn-default {
     background: #ccc;
 }
+
+
+.tree-display-none {
+    display: none;
+}

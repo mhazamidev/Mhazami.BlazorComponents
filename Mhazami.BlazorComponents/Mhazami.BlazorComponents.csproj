@@ -11,8 +11,8 @@
     <PackageTags>Blazor Components, DatePicker,Turkish DatePicker, Shamsi DatePicker,Hijri DatePicker, German DatePicker,TreeView,DropDownList,DropDownListMultiSelect,Checkbox,CheckboxList,RadioButtom,SwitchButton,LoadingButton,Tab,ExtendedPanel,ProgressBar</PackageTags>
     <PackAsTool>False</PackAsTool>
     <NeutralLanguage>en</NeutralLanguage>
-    <Version>8.4.9</Version>
-    <PackageReleaseNotes>Updating DropdownList &amp; DatePicker</PackageReleaseNotes>
+    <Version>8.4.11</Version>
+    <PackageReleaseNotes>Fixed TreeView Update Feature</PackageReleaseNotes>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <Title>Tafi</Title>
     <PackageId>Tafi</PackageId>

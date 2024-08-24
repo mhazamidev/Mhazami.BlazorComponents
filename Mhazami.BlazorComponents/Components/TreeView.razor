@@ -9,7 +9,7 @@
             @foreach (var node in MainNodes)
             {
                 <li>
-                    <div @onmouseover="()=>{ node.ShowIcons = true; }" @onmouseout="()=>{node.ShowIcons = false;}">
+                    <div style="width:fit-content" @onmouseover="()=>{ node.ShowIcons = true; }" @onmouseout="()=>{node.ShowIcons = false;}">
                         @if (node.HasChildren)
                         {
                             <span class="mh-treeview-icon" @onclick="()=>Expend(node.Id)">
@@ -34,37 +34,31 @@
                         <span class="mh-treeview-text">
                             @node.Title
                         </span>
-                        @if (Updateble && node.ShowIcons)
-                        {
-                            <span class="mh-treeview-window-icons-box">
-                                <span class="mh-treeview-window-icon tree-icon-edit" @onclick="()=>UpdateNode(node)">
-                                    <i class="fal fa-edit"></i>
-                                </span>
-                                @if (Removable)
-                                {
-                                    <span class="mh-treeview-window-icon tree-icon-delete" @onclick="()=>DeleteNode(node)">
-                                        <i class="fas fa-trash-alt"></i>
-                                    </span>
-                                }
+                        <span class="mh-treeview-window-icons-box @(node.ShowIcons?"":"tree-display-none")">
+                            <span class="mh-treeview-window-icon tree-icon-edit @(Updateble?"":"tree-display-none")" @onclick="()=>UpdateNode(node)">
+                                <i class="fal fa-edit"></i>
                             </span>
-                        }
+                            <span class="mh-treeview-window-icon tree-icon-delete @(Removable?"":"tree-display-none")" @onclick="()=>DeleteNode(node)">
+                                <i class="fas fa-trash-alt"></i>
+                            </span>
+                        </span>
                     </div>
                     @if (node.HasChildren && (node.IsExpanded || ExpendAll))
                     {
                         <TreeViewChild Model="node.Children"
-                                   IsOndemand="@IsOndemand"
-                                   ExpendedIcon="@ExpendedIcon"
-                                   UnExpendedIcon="@UnExpendedIcon"
-                                   OndemandEvent="LoadOndemand"
-                                   HasCheckBox="@HasCheckBox"
-                                   CheckedNodeCallback="CheckedNode"
-                                   Nodes="@Model"
-                                   CheckedList="@CheckedList"
-                                   Updateble="@Updateble"
-                                   Removable="@Removable"
-                                   OnUpdate="OnUpdate"
-                                   OnDelete="OnDelete"
-                                   Parent="@node.Id" />
+                                       IsOndemand="@IsOndemand"
+                                       ExpendedIcon="@ExpendedIcon"
+                                       UnExpendedIcon="@UnExpendedIcon"
+                                       OndemandEvent="LoadOndemand"
+                                       HasCheckBox="@HasCheckBox"
+                                       CheckedNodeCallback="CheckedNode"
+                                       Nodes="@Model"
+                                       CheckedList="@CheckedList"
+                                       Updateble="@Updateble"
+                                       Removable="@Removable"
+                                       OnUpdate="OnUpdate"
+                                       OnDelete="OnDelete"
+                                       Parent="@node.Id" />
                     }
                 </li>
             }
@@ -92,7 +86,7 @@
             <span class="close-update-modal" @onclick="CloseModal">
                 <i class="far fa-times"></i>
             </span>
-            @ModefyForm
+            @ChildContent
         </div>
     }
 }

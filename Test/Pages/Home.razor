@@ -5,7 +5,7 @@
 
 
 
-@* 
+@*
 
 <ProgressBar ProgressBarWidth="70"/> *@
 
@@ -134,7 +134,7 @@
 
 @* <RadioButton Items="@people" Name="test" TextField="Name" ValueField="Id" OnChange="Onchecked" Value="3" /> *@
 
-@* 
+@*
 <div style="width:250px;margin-bottom:20px">
     <CheckboxList Items="@people"
                   TextField="Name"
@@ -150,20 +150,25 @@
 </div>
  *@
 
-@* 
+
 
 <div style="width:250px;margin-bottom:20px">
     <label style="padding:5px 0">Only Year Format</label>
-    <TreeView Model="@person" HasCheckBox="false"  />
+    <TreeView Model="@person" HasCheckBox="false" Updateble="true">
+        <div style="width:250px;margin-bottom:20px">
+            <label style="padding:5px 0">Only Year Format</label>
+            <DropDownList Items="@people" TextField="Name" MuliSelect="true" ValueField="Id" />
+        </div>
+    </TreeView>
 </div>
- *@
+
 @* <div style="width:250px;margin-bottom:20px">
     <label style="padding:5px 0">Only Year Format</label>
     <DropDownList Items="@people" TextField="Name" MuliSelect="true" ValueField="Id"  />
 </div> *@
 
 
-@* 
+@*
 
  <div style="width:250px;margin-bottom:20px">
     <label style="padding:5px 0">Date Time Format</label>
