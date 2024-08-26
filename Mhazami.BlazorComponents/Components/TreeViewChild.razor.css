@@ -1,5 +1,6 @@
 .mh-children-list {
     list-style: none;
+    margin-left: 20px !important;
 }
 
 
@@ -12,6 +13,17 @@
 
 .mh-treeview-check {
     margin-right: 7px;
+}
+.tree-icon-edit {
+    color: #05a34a
+}
+
+.tree-icon-delete {
+    color: #de3384
+}
+.mh-treeview-window-icon {
+    margin: 0 2.5px;
+    cursor: pointer;
 }
 .tree-delete-confirm-box {
     position: fixed;
@@ -85,6 +97,7 @@
     right: 10px;
     cursor: pointer;
 }
+
 .tree-display-none {
     display: none;
 }

@@ -30,7 +30,7 @@
                     <span>
                         @node.Title
                     </span>
-                    <span class="mh-treeview-window-icons-box @(node.ShowIcons?"":"tree-display-none")">
+                    <span class="mh-treeview-window-icons-box @(node.ShowIcons&&(Updateble || Removable)?"":" tree-display-none")">
                         <span class="mh-treeview-window-icon tree-icon-edit @(Updateble?"":"tree-display-none")" @onclick="()=>UpdateNode(node)">
                             <i class="fal fa-edit"></i>
                         </span>
@@ -50,6 +50,8 @@
                                    CheckedNodeCallback="CheckedNode"
                                    Parent="@node.Id"
                                    CheckedList="@CheckedList"
+                                   Updateble="@Updateble"
+                                   Removable="@Removable"
                                    Nodes="@Nodes">
                         @ChildContent
                     </TreeViewChild>
