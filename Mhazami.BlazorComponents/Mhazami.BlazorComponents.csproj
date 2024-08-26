@@ -16,7 +16,7 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <Title>Tafi</Title>
     <PackageId>Tafi</PackageId>
-    <RepositoryUrl>https://github.com/mhazamidev/Mhazami.BlazorComponents</RepositoryUrl>
+    <RepositoryUrl>https://github.com/mhazamidev/Mhazami.BlazorComponents/wiki</RepositoryUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 

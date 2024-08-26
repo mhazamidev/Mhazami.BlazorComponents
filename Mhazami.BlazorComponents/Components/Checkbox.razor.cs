@@ -19,6 +19,8 @@ public partial class Checkbox
         }
     }
 
+  
+
     async Task OnChangeLable()
     {
         IsChecked = !IsChecked;

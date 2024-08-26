@@ -13,3 +13,78 @@
 .mh-treeview-check {
     margin-right: 7px;
 }
+.tree-delete-confirm-box {
+    position: fixed;
+    z-index: 1055;
+    background: #fff;
+    border-radius: 5px;
+    top: 35px;
+    margin: auto;
+    right: 0;
+    left: 0;
+    width: 450px;
+    text-align: center;
+    box-shadow: 0 0 3px #ff6a00;
+    padding: 20px;
+}
+
+.tree-delete-confirm-text {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 7px;
+    font-weight: bold;
+}
+
+.tree-delete-confirm-btn {
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 5px;
+    text-align: center;
+}
+
+.tree-delete-confirm-btn-danger {
+    background: #de3384;
+    color: #fff;
+}
+
+.tree-delete-confirm-btn-default {
+    background: #ccc;
+}
+
+.mh-treeview-update-modal {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0.4;
+    background-color: #000;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1055;
+}
+
+.mh-treeview-update-modal-body {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    position: fixed;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: fit-content;
+    height: fit-content;
+    z-index: 1055;
+}
+
+.close-update-modal {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    cursor: pointer;
+}
+.tree-display-none {
+    display: none;
+}

@@ -58,7 +58,9 @@
                                        Removable="@Removable"
                                        OnUpdate="OnUpdate"
                                        OnDelete="OnDelete"
-                                       Parent="@node.Id" />
+                                       Parent="@node.Id">
+                            @ChildContent
+                        </TreeViewChild>
                     }
                 </li>
             }

@@ -18,14 +18,18 @@ public partial class TreeViewChild
     [Parameter] public List<TreeNode> CheckedList { get; set; } = new List<TreeNode>();
     [Parameter] public bool Updateble { get; set; } = false;
     [Parameter] public bool Removable { get; set; } = false;
+    [Parameter] public RenderFragment ChildContent { get; set; }
     [Parameter] public EventCallback<TreeNode> OnUpdate { get; set; }
     [Parameter] public EventCallback<TreeNode> OnDelete { get; set; }
-
+    private TreeNode? SelectedNodeForDelete = null;
+    private bool OpenUpdateModal = false;
     protected override async Task OnInitializedAsync()
     {
         await base.OnInitializedAsync();
         PrepareTree();
     }
+
+    void CloseModal() => OpenUpdateModal = false;
     void PrepareTree()
     {
         foreach (var item in Model)
@@ -55,11 +59,24 @@ public partial class TreeViewChild
 
     async Task UpdateNode(TreeNode node)
     {
+        OpenUpdateModal = true;
         await OnUpdate.InvokeAsync(node);
     }
 
     async Task DeleteNode(TreeNode node)
     {
+        SelectedNodeForDelete = node;
         await OnDelete.InvokeAsync(node);
+    }
+
+    async Task ConfirmDelete(bool confirm)
+    {
+        if (!confirm)
+        {
+            SelectedNodeForDelete = null;
+            return;
+        }
+
+        await OnDelete.InvokeAsync(SelectedNodeForDelete);
     }
 }
