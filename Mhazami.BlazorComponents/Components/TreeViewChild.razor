@@ -52,6 +52,8 @@
                                    CheckedList="@CheckedList"
                                    Updateble="@Updateble"
                                    Removable="@Removable"
+                                   OnUpdate="UpdateNode"
+                                   OnDelete="DeleteNode"
                                    Nodes="@Nodes">
                         @ChildContent
                     </TreeViewChild>
@@ -59,29 +61,5 @@
             </li>
         }
     </ul>
-    @if (Removable && SelectedNodeForDelete is not null)
-    {
-        <div class="tree-delete-confirm-box">
-            <div class="tree-delete-confirm-text">
-                <span>
-                    Are you sure to delete @(SelectedNodeForDelete.Title)?
-                </span>
-            </div>
-            <div>
-                <span class="tree-delete-confirm-btn tree-delete-confirm-btn-danger" @onclick="()=>ConfirmDelete(true)">Yes</span>
-                <span class="tree-delete-confirm-btn tree-delete-confirm-btn-default" @onclick="()=>ConfirmDelete(false)">No</span>
-            </div>
-        </div>
-    }
-    @if (Updateble && OpenUpdateModal)
-    {
-        <div class="mh-treeview-update-modal">
-        </div>
-        <div class="mh-treeview-update-modal-body">
-            <span class="close-update-modal" @onclick="CloseModal">
-                <i class="far fa-times"></i>
-            </span>
-            @ChildContent
-        </div>
-    }
+  
 }

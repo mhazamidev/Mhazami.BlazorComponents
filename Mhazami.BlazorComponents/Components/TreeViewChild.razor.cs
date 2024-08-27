@@ -59,7 +59,6 @@ public partial class TreeViewChild
 
     async Task UpdateNode(TreeNode node)
     {
-        OpenUpdateModal = true;
         await OnUpdate.InvokeAsync(node);
     }
 
