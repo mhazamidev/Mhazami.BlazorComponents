@@ -7,7 +7,7 @@ public partial class Pagination
     [Parameter] public int TotalPages { get; set; }
     [Parameter] public int CurrentPage { get; set; } = 1;
     [Parameter] public EventCallback<int> OnPageChange { get; set; }
-    [Parameter] public int PaseSize { get; set; }
+    [Parameter] public int PaseSize { get; set; } = 10;
     private int FirstPage = 1;
     private int LastPage = 1;
 

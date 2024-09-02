@@ -18,7 +18,7 @@ public partial class DropDownList
     [Parameter] public string CustomClass { get; set; }
     [Parameter] public object Value { get; set; }
     private object? InternalValue;
-    [Parameter] public bool MuliSelect { get; set; } = false;
+    [Parameter] public bool MultiSelect { get; set; } = false;
     private SelectList _items = new();
     private bool hide = true;
     private List<SelectListItem> SelectedList = new();
@@ -42,7 +42,7 @@ public partial class DropDownList
             if (InternalValue is not null)
                 Value = InternalValue;
             _items = new SelectList(Items, ValueField, TextField, Value);
-            if (!MuliSelect && Value is not null && _items.SelectedValue is not null)
+            if (!MultiSelect && Value is not null && _items.SelectedValue is not null)
                 SelectedValue = _items.SelectedValue.Text;
             else if (SelectedItems is not null && SelectedItems.Any())
             {               
@@ -68,7 +68,7 @@ public partial class DropDownList
     {
         if (SelectableList.Any(x => x.Value == item.Value))
             return;
-        if (!MuliSelect)
+        if (!MultiSelect)
         {
             SelectedValue = item.Text;
             InternalValue = item.Value;

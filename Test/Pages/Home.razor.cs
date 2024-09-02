@@ -1,4 +1,5 @@
 ﻿using Mhazami.BlazorComponents.Models;
+using Microsoft.AspNetCore.Components.Web;
 
 namespace Test.Pages;
 
@@ -30,8 +31,12 @@ public partial class Home
     {
 
     }
+    async Task Click()
+    {
 
-   
+    }
+
+
 }
 
 

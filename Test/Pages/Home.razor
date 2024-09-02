@@ -6,25 +6,21 @@
 
 
 
+
+
+
+@* <Tab SelectedTab="tab1">
+    <TabItem Title="tab1">
+        <p> conten of tab 1</p>
+    </TabItem>
+    <TabItem Title="tab2">
+        <p> conten of tab 2</p>
+    </TabItem>
+</Tab>
+ *@
 @*
-<ProgressBar ProgressBarWidth="70"/> *@
-
-
-
-
-
-
-@* <Tab SelectedTab="Group 2">
+<Tab SelectedTab="Group 2">
     <TabItem Title="Group 1">
-        <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-            when an unknown printer took a galley of type and scrambled it to make a type
-            specimen book. It has survived not only five centuries, but also the leap into
-            electronic typesetting, remaining essentially unchanged. It was popularised in
-            the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
-            and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-        </p>
         <p>
             Lorem Ipsum is simply dummy text of the printing and typesetting industry.
             Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
@@ -36,15 +32,6 @@
         </p>
     </TabItem>
     <TabItem Title="Group 2">
-        <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-            when an unknown printer took a galley of type and scrambled it to make a type
-            specimen book. It has survived not only five centuries, but also the leap into
-            electronic typesetting, remaining essentially unchanged. It was popularised in
-            the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
-            and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-        </p>
         <p>
             Lorem Ipsum is simply dummy text of the printing and typesetting industry.
             Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
@@ -74,21 +61,12 @@
             the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
             and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
         </p>
-        <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-            when an unknown printer took a galley of type and scrambled it to make a type
-            specimen book. It has survived not only five centuries, but also the leap into
-            electronic typesetting, remaining essentially unchanged. It was popularised in
-            the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
-            and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-        </p>
     </TabItem>
 </Tab>
  *@
 
 
-@* <LoadingButton Text="Save" EnableLoading="true" /> *@
+
 
 @*  <SwitchButton Value="true" Style="SwitchShape.circle" />
 <SwitchButton Value="true" Style="SwitchShape.Square" /> *@
@@ -152,7 +130,7 @@
 
 
 
-<div style="width:250px;margin-bottom:20px">
+@* <div style="width:250px;margin-bottom:20px">
     <label style="padding:5px 0">Only Year Format</label>
     <TreeView Model="@person" HasCheckBox="false" Updateble="true">
         <div style="width:250px;margin-bottom:20px">
@@ -161,13 +139,7 @@
         </div>
     </TreeView>
 
-</div>
-
-@* <div style="width:250px;margin-bottom:20px">
-    <label style="padding:5px 0">Only Year Format</label>
-    <DropDownList Items="@people" TextField="Name" MuliSelect="true" ValueField="Id"  />
 </div> *@
-
 
 @*
 
@@ -177,9 +149,22 @@
 </div>
  *@
 
-@*  <CheckboxList />
-
- @code{
-
- }
+@* <div style="width:250px;margin-bottom:20px">
+    <label style="padding:5px 0">Only Year Format</label>
+    <DropDownList Items="@people" TextField="Name" MultiSelect="true" ValueField="Id"  />
+</div>
  *@
+
+
+
+@* <LoadingButton Text="Save" CssClass="my-style" EnableLoading="true" OnClick="Click" /> *@
+@* <Pagination CurrentPage="1" PaseSize="10" TotalPages="25" OnPageChange="OnChange" /> *@
+
+
+
+
+<ProgressBar CssClass="my-style" ProgressBarWidth="70"/>
+
+@code {
+  
+}

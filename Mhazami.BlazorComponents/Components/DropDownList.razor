@@ -36,7 +36,7 @@
                 @foreach (var item in _items.Items)
                 {
                     <div class="mh-drp-item" @onclick="()=>SelectItem(item)">
-                        @if (MuliSelect)
+                        @if (MultiSelect)
                         {
                             <input type="checkbox" disabled="@(SelectableList.Any(x=>x.Value == item.Value))" checked="@(SelectedList.Any(x => x.Value == item.Value))" />
                         }

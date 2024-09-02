@@ -5,7 +5,7 @@
 </style>
 
 
-<button class="buttonload @CssClass" disabled="@EnableLoading">
+<button class="buttonload @CssClass" disabled="@EnableLoading" @onclick="CallClick">
     @if (EnableLoading)
     {
         <i class="fa fa-spinner fa-spin"></i>
