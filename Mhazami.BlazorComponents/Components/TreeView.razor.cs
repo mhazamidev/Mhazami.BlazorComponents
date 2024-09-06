@@ -44,11 +44,9 @@ public partial class TreeView
     {
         var node = Model.FirstOrDefault(x => x.Id == nodeId);
         if (node is not null)
-        {
             node.IsExpanded = !node.IsExpanded;
-            if (IsOndemand)
-                await LoadOndemand(nodeId);
-        }
+        if (IsOndemand)
+            await LoadOndemand(nodeId);
     }
 
     async Task CheckedNode(TreeNode node)

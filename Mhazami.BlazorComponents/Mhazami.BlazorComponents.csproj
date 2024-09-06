@@ -1,44 +1,46 @@
 <Project Sdk="Microsoft.NET.Sdk.Razor">
 
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Authors>Mohammad Azami</Authors>
-    <Description>Blazor Components</Description>
-    <PackageIcon>nuget-package-128x128.png</PackageIcon>
-    <PackageTags>Blazor Components, DatePicker,Turkish DatePicker, Shamsi DatePicker,Hijri DatePicker, German DatePicker,TreeView,DropDownList,DropDownListMultiSelect,Checkbox,CheckboxList,RadioButtom,SwitchButton,LoadingButton,Tab,ExtendedPanel,ProgressBar</PackageTags>
-    <PackAsTool>False</PackAsTool>
-    <NeutralLanguage>en</NeutralLanguage>
-    <Version>8.5.3</Version>
-    <PackageReleaseNotes>Updated Some Components</PackageReleaseNotes>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
-    <Title>Tafi</Title>
-    <PackageId>Tafi</PackageId>
-    <RepositoryUrl>https://github.com/mhazamidev/Mhazami.BlazorComponents/wiki</RepositoryUrl>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<Authors>Mohammad Azami</Authors>
+		<Description>Blazor Components</Description>
+		<PackageIcon>nuget-package-128x128.png</PackageIcon>
+		<PackageTags>Blazor Components, DatePicker,Turkish DatePicker, Shamsi DatePicker,Hijri DatePicker, German DatePicker,TreeView,DropDownList,DropDownListMultiSelect,Checkbox,CheckboxList,RadioButtom,SwitchButton,LoadingButton,Tab,ExtendedPanel,ProgressBar</PackageTags>
+		<PackAsTool>False</PackAsTool>
+		<NeutralLanguage>en</NeutralLanguage>
+		<Version>8.5.4</Version>
+		<PackageReleaseNotes>Updated DropDownList Components</PackageReleaseNotes>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<Title>Tafi</Title>
+		<PackageId>Tafi</PackageId>
+		<RepositoryUrl>https://github.com/mhazamidev/Mhazami.BlazorComponents/wiki</RepositoryUrl>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<StaticWebAssetBasePath>_content/$(PackageId)</StaticWebAssetBasePath>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <None Include="..\..\..\Nuget Icon\Reounded\nuget-package-128x128.png">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
-    <None Include="..\README.md">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
-  </ItemGroup>
+	<ItemGroup>
+		<None Include="..\..\..\Nuget Icon\Reounded\nuget-package-128x128.png">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<None Include="..\README.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<None Update="Components/Pages/*.razor.css" CssScope="custom-scope-identifier" />
+	</ItemGroup>
 
 
-  <ItemGroup>
-    <SupportedPlatform Include="browser" />
-  </ItemGroup>
+	<ItemGroup>
+		<SupportedPlatform Include="browser" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Mhazami.Utility" Version="2.0.2" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.3" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Mhazami.Utility" Version="2.0.2" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.3" />
+	</ItemGroup>
 
 </Project>

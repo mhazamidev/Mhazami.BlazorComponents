@@ -45,8 +45,16 @@ public partial class DropDownList
             if (!MultiSelect && Value is not null && _items.SelectedValue is not null)
                 SelectedValue = _items.SelectedValue.Text;
             else if (SelectedItems is not null && SelectedItems.Any())
-            {               
-                SelectedList = SelectedItems as List<SelectListItem>;
+            {
+                if (SelectedItems.EqualsSelectedItemType(new List<SelectListItem>()))
+                    SelectedList = (List<SelectListItem>)SelectedItems;
+                else
+                    SelectedList = new SelectList(SelectedItems, ValueField, TextField).Items
+                    .Select(x => new SelectListItem
+                    {
+                        Value = x.Value,
+                        Text = x.Text
+                    }).ToList();
 
                 SelectedValue = string.Join(',', SelectedList.Select(x => x.Text));
             }
