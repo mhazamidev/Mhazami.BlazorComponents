@@ -68,6 +68,8 @@ public partial class DropDownList
                 }).ToList();
             }
         }
+        else
+            SelectedValue = string.Empty;
         StateHasChanged();
     }
     void Toggle() => hide = !hide;
@@ -104,9 +106,6 @@ public partial class DropDownList
         hide = true;
     }
     bool ValidateParameters()
-    {
-        if (string.IsNullOrEmpty(TextField) || string.IsNullOrEmpty(ValueField))
-            return false;
-        return Items is not null && Items.Any();
-    }
+        => !(Items is null || !Items.Any() || string.IsNullOrEmpty(TextField) || string.IsNullOrEmpty(ValueField));
+
 }
