@@ -3,9 +3,12 @@
 }
 
 .mh-treeview-text {
+    
 }
 
-
+.pointer {
+    cursor: pointer
+}
 
 .mh-treeview-icon {
     padding-right: 10px;

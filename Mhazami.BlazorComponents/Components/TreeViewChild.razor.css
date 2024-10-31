@@ -2,7 +2,9 @@
     list-style: none;
     margin-left: 20px !important;
 }
-
+.pointer {
+    cursor: pointer
+}
 
 .mh-treeview-icon {
     padding-right: 10px;

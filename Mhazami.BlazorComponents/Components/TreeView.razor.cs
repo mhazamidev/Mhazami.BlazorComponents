@@ -19,13 +19,17 @@ public partial class TreeView
     [Parameter] public bool Removable { get; set; } = false;
     [Parameter] public RenderFragment ChildContent { get; set; }
     [Parameter] public EventCallback<TreeNode> OnUpdate { get; set; }
+    [Parameter] public EventCallback<TreeNode> OnClick { get; set; }
     [Parameter] public EventCallback<TreeNode> OnDelete { get; set; }
+    [Parameter] public string Tooltip { get; set; }
     private List<TreeNode> MainNodes = new List<TreeNode>();
     private bool OpenUpdateModal = false;
     private TreeNode? SelectedNodeForDelete = null;
+    private bool HasOnClick = false;
     protected override async Task OnInitializedAsync()
     {
         await base.OnInitializedAsync();
+        HasOnClick = OnClick.HasDelegate;
         PrepareTree();
     }
 
@@ -92,5 +96,10 @@ public partial class TreeView
         }
 
         await OnDelete.InvokeAsync(SelectedNodeForDelete);
+    }
+
+    async Task CallOnClick(TreeNode node)
+    {
+        await OnClick.InvokeAsync(node);
     }
 }
