@@ -21,8 +21,16 @@
     {
         <input type="text" readonly class="mh-drp" @bind-value="@SelectedValue" @bind-value:event="oninput" @onclick="Toggle" />
     }
+   
     @if (!hide)
     {
+        @if (HasSearch)
+        {
+            <div class="drp-srch-box position-relative">
+                <i class="fa fa-search"></i>
+                <input type="text" class="mh-drp-search" @oninput="Search" />
+            </div>
+        }
         <div class="mh-drp-options">
             @if (!string.IsNullOrEmpty(DefaultTitle))
             {
@@ -33,7 +41,7 @@
 
             @if (Items != null && Items.Any())
             {
-                @foreach (var item in _items.Items)
+                @foreach (var item in Model)
                 {
                     <div class="mh-drp-item" @onclick="()=>SelectItem(item)">
                         @if (MultiSelect)

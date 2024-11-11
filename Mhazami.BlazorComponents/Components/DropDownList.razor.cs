@@ -17,6 +17,7 @@ public partial class DropDownList
     [Parameter] public string Id { get; set; }
     [Parameter] public string CustomClass { get; set; }
     [Parameter] public object Value { get; set; }
+    [Parameter] public bool HasSearch { get; set; } = false;
     private object? InternalValue;
     [Parameter] public bool MultiSelect { get; set; } = false;
     private SelectList _items = new();
@@ -24,6 +25,8 @@ public partial class DropDownList
     private List<SelectListItem> SelectedList = new();
     private List<SelectListItem> SelectableList = new();
     private string SelectedValue = "";
+    private string SearchText = "";
+    List<SelectListItem> Model = new();
 
     protected override async Task OnInitializedAsync()
     {
@@ -31,10 +34,8 @@ public partial class DropDownList
         Prepare();
     }
 
-    protected override void OnParametersSet()
-    {
-        Prepare();
-    }
+    protected override void OnParametersSet() => Prepare();
+
     void Prepare()
     {
         if (ValidateParameters())
@@ -67,6 +68,8 @@ public partial class DropDownList
                     Text = x.Text
                 }).ToList();
             }
+            Model.Clear();
+            Model.AddRange(_items.Items);
         }
         else
             SelectedValue = string.Empty;
@@ -108,4 +111,21 @@ public partial class DropDownList
     bool ValidateParameters()
         => !(Items is null || !Items.Any() || string.IsNullOrEmpty(TextField) || string.IsNullOrEmpty(ValueField));
 
+  
+    private void Search(ChangeEventArgs e)
+    {
+        if (e is null)
+            return;
+
+        SearchText = e.Value as string;
+
+        Model.Clear();
+        List<SelectListItem> result = default!;
+        if (!string.IsNullOrEmpty(SearchText))
+            result = _items.Items.Where(x => x.Text.ToLower().Contains(SearchText.ToLower().Trim())).ToList();
+        else
+            result = _items.Items;
+        Model.AddRange(result);
+        StateHasChanged();
+    }
 }
