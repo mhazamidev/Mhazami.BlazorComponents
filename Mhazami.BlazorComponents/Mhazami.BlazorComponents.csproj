@@ -11,8 +11,8 @@
 		<PackageTags>Blazor Components, DatePicker,Turkish DatePicker, Shamsi DatePicker,Hijri DatePicker, German DatePicker,TreeView,DropDownList,DropDownListMultiSelect,Checkbox,CheckboxList,RadioButtom,SwitchButton,LoadingButton,Tab,ExtendedPanel,ProgressBar</PackageTags>
 		<PackAsTool>False</PackAsTool>
 		<NeutralLanguage>en</NeutralLanguage>
-		<Version>8.5.6</Version>
-		<PackageReleaseNotes>Added Tooltip and onclick to TreeView Components</PackageReleaseNotes>
+		<Version>8.5.9</Version>
+		<PackageReleaseNotes>Added Refresh event to TreeView Components</PackageReleaseNotes>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<Title>Tafi</Title>
 		<PackageId>Tafi</PackageId>

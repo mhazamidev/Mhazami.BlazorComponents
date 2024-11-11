@@ -3,7 +3,6 @@
 }
 
 .mh-treeview-text {
-    
 }
 
 .pointer {
@@ -117,3 +116,12 @@
 .tree-display-none {
     display: none !important;
 }
+
+.isselected {
+    border: 1px solid #0dcaf0;
+    border-radius: 3px;
+}
+
+    .isselected > ul > li.isselected {
+        border: 0 !important;
+    }

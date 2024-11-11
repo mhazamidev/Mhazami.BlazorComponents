@@ -8,7 +8,7 @@
         <ul class="mh-treeview">
             @foreach (var node in MainNodes)
             {
-                <li>
+                <li class="@(SelectedNode!=null&&SelectedNode.Id==node.Id?OnSelectClass:"")">
                     <div style="width:fit-content" @onmouseover="()=>{ node.ShowIcons = true; }" @onmouseout="()=>{node.ShowIcons = false;}">
                         @if (node.HasChildren)
                         {
@@ -59,7 +59,10 @@
                                        OnUpdate="UpdateNode"
                                        OnDelete="DeleteNode"
                                        OnClick="OnClick"
+                                       @ref="childTree"
                                        Tooltip="@Tooltip"
+                                       OnSelectedCssClass="@OnSelectedCssClass"
+                                       ChangeSelectedNode="CallOnClick"
                                        Parent="@node.Id">
                             @ChildContent
                         </TreeViewChild>

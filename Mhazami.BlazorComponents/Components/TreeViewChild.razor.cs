@@ -22,10 +22,16 @@ public partial class TreeViewChild
     [Parameter] public EventCallback<TreeNode> OnUpdate { get; set; }
     [Parameter] public EventCallback<TreeNode> OnClick { get; set; }
     [Parameter] public EventCallback<TreeNode> OnDelete { get; set; }
+    [Parameter] public EventCallback<TreeNode> ChangeSelectedNode { get; set; }
+
+    [Parameter] public string OnSelectedCssClass { get; set; } = "";
     [Parameter] public string Tooltip { get; set; }
     private TreeNode? SelectedNodeForDelete = null;
+    public TreeNode? SelectedNode = null;
     private bool OpenUpdateModal = false;
     private bool HasOnClick = false;
+    string OnSelectClass = "";
+    TreeViewChild childTree;
     protected override async Task OnInitializedAsync()
     {
         await base.OnInitializedAsync();
@@ -83,6 +89,21 @@ public partial class TreeViewChild
 
     async Task CallOnClick(TreeNode node)
     {
+        SelectedNode = node;
+        SetOnClickSelectedClass(node);
+        if (childTree is not null)
+            childTree.SelectedNode = node;
+        await ChangeSelectedNode.InvokeAsync(node);
         await OnClick.InvokeAsync(node);
+    }
+
+    string SetOnClickSelectedClass(TreeNode node)
+    {
+        if (!string.IsNullOrEmpty(OnSelectedCssClass))
+            OnSelectClass = OnSelectedCssClass;
+        else
+            OnSelectClass = "isselected";
+
+        return OnSelectClass;
     }
 }

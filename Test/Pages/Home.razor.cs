@@ -1,4 +1,5 @@
-﻿using Mhazami.BlazorComponents.Models;
+﻿using Mhazami.BlazorComponents.Components;
+using Mhazami.BlazorComponents.Models;
 using Microsoft.AspNetCore.Components.Web;
 
 namespace Test.Pages;
@@ -21,7 +22,7 @@ public partial class Home
       },
       new TreeNode{Id = "4",Title ="USA"},
     };
-
+    private TreeView tree;
     void Onchecked(string value)
     {
         StateHasChanged();
@@ -39,6 +40,10 @@ public partial class Home
     async Task TreeClick(TreeNode node)
     {
 
+    }
+
+    void Test()
+    {
     }
 }
 

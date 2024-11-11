@@ -3,7 +3,7 @@
     <ul class="mh-children-list">
         @foreach (var node in Model)
         {
-            <li>
+            <li class="@(SelectedNode!=null&&SelectedNode.Id==node.Id?OnSelectClass:"")">
                 <div @onmouseover="()=>{ node.ShowIcons = true; }" @onmouseout="()=>{node.ShowIcons = false;}">
                     @if (node.HasChildren)
                     {
@@ -56,7 +56,10 @@
                                    OnDelete="DeleteNode"
                                    OnClick="OnClick"
                                    Tooltip="@Tooltip"
-                                   Nodes="@Nodes">
+                                   OnSelectedCssClass="@OnSelectedCssClass"
+                                   ChangeSelectedNode="CallOnClick"
+                                   Nodes="@Nodes"
+                                   @ref="childTree">
                         @ChildContent
                     </TreeViewChild>
                 }

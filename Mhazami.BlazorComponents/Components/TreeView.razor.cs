@@ -22,16 +22,36 @@ public partial class TreeView
     [Parameter] public EventCallback<TreeNode> OnClick { get; set; }
     [Parameter] public EventCallback<TreeNode> OnDelete { get; set; }
     [Parameter] public string Tooltip { get; set; }
+    [Parameter] public string OnSelectedCssClass { get; set; } = "";
     private List<TreeNode> MainNodes = new List<TreeNode>();
     private bool OpenUpdateModal = false;
     private TreeNode? SelectedNodeForDelete = null;
     private bool HasOnClick = false;
+    private TreeNode? SelectedNode = null;
+    string OnSelectClass = "";
+    TreeViewChild childTree;
+    [Parameter] public EventCallback<TreeNode> ChangeSelectedNode { get; set; }
     protected override async Task OnInitializedAsync()
     {
         await base.OnInitializedAsync();
         HasOnClick = OnClick.HasDelegate;
         PrepareTree();
+        StateHasChanged();
     }
+
+    public void Refresh()
+    {
+        PrepareTree();
+        StateHasChanged();
+    }
+
+    public void Refresh(IEnumerable<TreeNode> nodes)
+    {
+        Model = nodes.ToList();
+        Refresh();
+    }
+
+
 
     protected override void OnParametersSet()
         => PrepareTree();
@@ -41,7 +61,7 @@ public partial class TreeView
     {
         var parents = Model.Where(x => !string.IsNullOrEmpty(x.Parent)).Select(x => x.Parent);
         MainNodes = Model.Where(x => string.IsNullOrEmpty(x.Parent) || !parents.Contains(x.Parent)).ToList();
-
+        StateHasChanged();
     }
 
     async void Expend(string nodeId)
@@ -100,6 +120,20 @@ public partial class TreeView
 
     async Task CallOnClick(TreeNode node)
     {
+        SelectedNode = node;
+        SetOnClickSelectedClass(node);
+        if (childTree is not null)
+            childTree.SelectedNode = node;
         await OnClick.InvokeAsync(node);
+    }
+
+    string SetOnClickSelectedClass(TreeNode node)
+    {
+        if (!string.IsNullOrEmpty(OnSelectedCssClass))
+            OnSelectClass = OnSelectedCssClass;
+        else
+            OnSelectClass = "isselected";
+
+        return OnSelectClass;
     }
 }

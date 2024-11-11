@@ -130,16 +130,16 @@
 
 
 
-<div style="width:250px;margin-bottom:20px">
+@* <div style="width:250px;margin-bottom:20px">
     <label style="padding:5px 0">Only Year Format</label>
-    <TreeView Model="@person" HasCheckBox="false" Tooltip="test">
+    <TreeView Model="@person" HasCheckBox="false" Tooltip="test" @ref="tree" >
         <div style="width:250px;margin-bottom:20px">
             <label style="padding:5px 0">Only Year Format</label>
             <DropDownList Items="@people" TextField="Name" MuliSelect="true" ValueField="Id" />
         </div>
     </TreeView>
-
-</div>
+    <button @onclick="Test">Refresh</button>
+</div> *@
 
 @*
 
@@ -149,11 +149,11 @@
 </div>
  *@
 
-@* <div style="width:250px;margin-bottom:20px">
+<div style="width:250px;margin-bottom:20px">
     <label style="padding:5px 0">Only Year Format</label>
-    <DropDownList Items="@people" TextField="Name" MultiSelect="true" ValueField="Id"  />
+    <DropDownList Items="@people" TextField="Name" ValueField="Id"  />
 </div>
- *@
+
 
 
 
