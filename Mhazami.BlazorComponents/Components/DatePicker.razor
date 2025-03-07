@@ -101,7 +101,7 @@
                                                 else
                                                 {
                                                     var cDate = DateOfMonth[j - 1];
-                                                    @if (StartDate != null && cDate <= StartDate)
+                                                    @if ((StartDate != null || ToDate != null) && DisabledOfDates.Any(x => x == cDate))
                                                     {
                                                         <td class="disabled-date @(cDate.Date==Today.Date?"today":"")">
                                                             <span>
@@ -109,7 +109,7 @@
                                                             </span>
                                                         </td>
                                                     }
-                                                    else if (ToDate != null && ToDate < cDate)
+                                                    else if (Disable)
                                                     {
                                                         <td class="disabled-date @(cDate.Date==Today.Date?"today":"")">
                                                             <span>
@@ -171,38 +171,72 @@
                                 case CalendarType.Hijri:
                                     @foreach (var month in EnumUtils.ConvertEnumToIEnumerable<HijriMonths>())
                                     {
-                                        <span @onclick="()=>ChangeMonthForOnlyMonthMode((byte)month.Key.ToEnum<HijriMonths>())">@month.Value</span>
+                                        @if ((StartDate != null || ToDate != null) && DisabledMonth.Any(x => x == (byte)month.Key.ToEnum<HijriMonths>()))
+                                        {
+                                            <span class="disabled-month">@month.Value</span>
+                                        }
+                                        else
+                                        {
+                                            <span @onclick="()=>ChangeMonthForOnlyMonthMode((byte)month.Key.ToEnum<HijriMonths>())">@month.Value</span>
+                                        }
                                     }
                                     break;
                                 case CalendarType.Turkish:
                                     @foreach (var month in EnumUtils.ConvertEnumToIEnumerable<TurkishMonths>())
                                     {
-                                        <span @onclick="()=>ChangeMonthForOnlyMonthMode((byte)month.Key.ToEnum<TurkishMonths>())">@month.Value</span>
+                                        @if ((StartDate != null || ToDate != null) && DisabledMonth.Any(x => x == (byte)month.Key.ToEnum<TurkishMonths>()))
+                                        {
+                                            <span class="disabled-month">@month.Value</span>
+                                        }
+                                        else
+                                        {
+                                            <span @onclick="()=>ChangeMonthForOnlyMonthMode((byte)month.Key.ToEnum<TurkishMonths>())">@month.Value</span>
+                                        }
                                     }
                                     break;
                                 case CalendarType.Shamsi:
                                     @foreach (var month in EnumUtils.ConvertEnumToIEnumerable<ShamsiMonths>())
                                     {
-                                        <span @onclick="()=>ChangeMonthForOnlyMonthMode((byte)month.Key.ToEnum<ShamsiMonths>())">@month.Value</span>
+                                        @if ((StartDate != null || ToDate != null) && DisabledMonth.Any(x => x == (byte)month.Key.ToEnum<ShamsiMonths>()))
+                                        {
+                                            <span class="disabled-month">@month.Value</span>
+                                        }
+                                        else
+                                        {
+                                            <span @onclick="()=>ChangeMonthForOnlyMonthMode((byte)month.Key.ToEnum<ShamsiMonths>())">@month.Value</span>
+                                        }
                                     }
                                     break;
                                 case CalendarType.German:
                                     @foreach (var month in EnumUtils.ConvertEnumToIEnumerable<GermanMonths>())
                                     {
-                                        <span @onclick="()=>ChangeMonthForOnlyMonthMode((byte)month.Key.ToEnum<GermanMonths>())">@month.Value</span>
+                                        @if ((StartDate != null || ToDate != null) && DisabledMonth.Any(x => x == (byte)month.Key.ToEnum<GermanMonths>()))
+                                        {
+                                            <span class="disabled-month">@month.Value</span>
+                                        }
+                                        else
+                                        {
+                                            <span @onclick="()=>ChangeMonthForOnlyMonthMode((byte)month.Key.ToEnum<GermanMonths>())">@month.Value</span>
+                                        }
                                     }
                                     break;
                                 case CalendarType.Gregorian:
                                 default:
                                     @foreach (var month in EnumUtils.ConvertEnumToIEnumerable<GregorianMonths>())
                                     {
-                                        <span @onclick="()=>ChangeMonthForOnlyMonthMode((byte)month.Key.ToEnum<GregorianMonths>())">@month.Value</span>
+                                        @if ((StartDate != null || ToDate != null) && DisabledMonth.Any(x => x == (byte)month.Key.ToEnum<GregorianMonths>()))
+                                        {
+                                            <span class="disabled-month">@month.Value</span>
+                                        }
+                                        else
+                                        {
+                                            <span @onclick="()=>ChangeMonthForOnlyMonthMode((byte)month.Key.ToEnum<GregorianMonths>())">@month.Value</span>
+                                        }
                                     }
                                     break;
                             }
                         </div>
                         break;
-
                 }
             </div>
         </div>

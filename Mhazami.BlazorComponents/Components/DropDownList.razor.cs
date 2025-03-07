@@ -12,8 +12,8 @@ public partial class DropDownList
     [Parameter] public string TextField { get; set; }
     [Parameter] public string ValueField { get; set; }
     [Parameter] public string DefaultTitle { get; set; }
-    [Parameter] public EventCallback<object> OnChangeAction { get; set; }
-    [Parameter] public EventCallback<IEnumerable<object>> OnChangeMultiAction { get; set; }
+    [Parameter] public EventCallback<string> OnChangeAction { get; set; }
+    [Parameter] public EventCallback<IEnumerable<string>> OnChangeMultiAction { get; set; }
     [Parameter] public string Id { get; set; }
     [Parameter] public string CustomClass { get; set; }
     [Parameter] public object Value { get; set; }
@@ -110,8 +110,6 @@ public partial class DropDownList
     }
     bool ValidateParameters()
         => !(Items is null || !Items.Any() || string.IsNullOrEmpty(TextField) || string.IsNullOrEmpty(ValueField));
-
-  
     private void Search(ChangeEventArgs e)
     {
         if (e is null)
@@ -128,4 +126,18 @@ public partial class DropDownList
         Model.AddRange(result);
         StateHasChanged();
     }
+
+    public void Refresh(object? value = null)
+    {
+        if (value is not null)
+            InternalValue = value;
+    }
+    public void Reset()
+    {
+        SelectedValue = string.Empty;
+        InternalValue = string.Empty;
+        StateHasChanged();
+    }
 }
+
+public record DropdownListItem(string Key, string Value);

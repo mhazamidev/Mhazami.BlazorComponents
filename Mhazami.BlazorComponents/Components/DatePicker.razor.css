@@ -162,3 +162,7 @@ select.form-control {
 .text-center {
     text-align: center;
 }
+
+.disabled-month {
+    opacity: .45;
+}

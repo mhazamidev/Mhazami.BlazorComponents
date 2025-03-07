@@ -6,7 +6,17 @@
 
 
 
+<DatePicker DatePickerType="DatePickerType.Month"
+            CalendarType="CalendarType.Turkish"
+            StartDate="@(DateTime.Now)"
+            ToDate="@(DateTime.Now.AddMonths(2))" />
+@* 
+<DatePicker DatePickerType="DatePickerType.Date"
+            CalendarType="CalendarType.Turkish"
+            StartDate="@(DateTime.Now)" />  *@
 
+@* <Stepper /> *@
+@* <Checkbox TItem=""/> *@
 
 
 @* <Tab SelectedTab="tab1">
@@ -129,14 +139,15 @@
 
 
 
-
-@* <div style="width:250px;margin-bottom:20px">
+@* 
+<div style="width:250px;margin-bottom:20px">
     <label style="padding:5px 0">Only Year Format</label>
     <TreeView Model="@person" HasCheckBox="false" Tooltip="test" @ref="tree" >
         <div style="width:250px;margin-bottom:20px">
             <label style="padding:5px 0">Only Year Format</label>
             <DropDownList Items="@people" TextField="Name" MuliSelect="true" ValueField="Id" />
         </div>
+
     </TreeView>
     <button @onclick="Test">Refresh</button>
 </div> *@
@@ -149,13 +160,20 @@
 </div>
  *@
 
-<div style="width:250px;margin-bottom:20px">
+@* <div style="width:250px;margin-bottom:20px">
     <label style="padding:5px 0">Only Year Format</label>
-    <DropDownList Items="@people" TextField="Name" HasSearch="true" ValueField="Id"  />
+    <DropDownList Items="@people"
+                  @ref="drp"
+                  TextField="Name"
+                  Value="2"
+                  HasSearch="true"
+                  ValueField="Id" />
 </div>
+<button @onclick="()=>{drp.Reset();}">reset</button>
+<button @onclick="()=>{drp.Refresh(1);}">refresh</button> *@
 
 
-
+@* <DatePicker DatePickerType="DatePickerType.Year" StartDate="@(DateTime.Now)" ToDate="@(DateTime.Now.AddYears(5))" /> *@
 
 @* <LoadingButton Text="Save" CssClass="my-style" EnableLoading="true" OnClick="Click" /> *@
 @* <Pagination CurrentPage="1" PaseSize="10" TotalPages="25" OnPageChange="OnChange" /> *@
@@ -166,5 +184,5 @@
 @* <ProgressBar CssClass="my-style" ProgressBarWidth="70"/> *@
 
 @code {
-  
+
 }

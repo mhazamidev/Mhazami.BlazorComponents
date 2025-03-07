@@ -20,6 +20,7 @@ public partial class DatePicker
     [Parameter] public DatePickerType DatePickerType { get; set; } = DatePickerType.DateTime;
     [Parameter] public CalendarType CalendarType { get; set; } = CalendarType.Gregorian;
     [Parameter] public bool AutoClose { get; set; } = true;
+    [Parameter] public bool Disable { get; set; } = false;
 
     private bool hide = true;
     private int Year = DateTime.Now.Year;
@@ -29,6 +30,46 @@ public partial class DatePicker
     private string DayName = "";
     private string DayNameShort = "";
     private List<DateTime> DateOfMonth = new List<DateTime>();
+    private List<int> DisabledMonth
+    {
+        get
+        {
+            var months = new int[12] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 }.ToList();
+
+            if (StartDate is null && ToDate is null)
+                return default!;
+
+            if (StartDate is not null && ToDate is null)
+                return months.Where(x => x < StartDate.Value.Month).ToList();
+
+            if (StartDate is null && ToDate is not null)
+                return months.Where(x => x >= ToDate.Value.Month).ToList();
+
+            if (StartDate is not null && ToDate is not null)
+                return months.Where(x => x < StartDate.Value.Month || x >= ToDate.Value.Month).ToList();
+
+            return default!;
+        }
+    }
+    private List<DateTime> DisabledOfDates
+    {
+        get
+        {
+            if (StartDate is null && ToDate is null)
+                return default!;
+
+            if (StartDate is not null && ToDate is null)
+                return DateOfMonth.Where(x => x <= StartDate).ToList();
+
+            if (StartDate is null && ToDate is not null)
+                return DateOfMonth.Where(x => x > ToDate).ToList();
+
+            if (StartDate is not null && ToDate is not null)
+                return DateOfMonth.Where(x => x <= StartDate || x > ToDate).ToList();
+
+            return default!;
+        }
+    }
     private KeyValuePair<int, int> EmptyDates = new KeyValuePair<int, int>();
     private DateTime CurrentValue;
     private DateTime Today = DateTime.Now;
@@ -151,11 +192,14 @@ public partial class DatePicker
     void Open() => hide = !hide;
     private void PrepareDate(DateTime dateOfValue, bool applyAutoClose = true)
     {
+        if (StartDate is not null && ToDate is not null && StartDate > ToDate)
+            throw new Exception("ToDate can not be greater than StartDate");
+
         Year = dateOfValue.Year;
         DayNum = GetDayByCalendarType(dateOfValue);
         GetDayInfo(dateOfValue);
         GetMonthInfo(dateOfValue);
-        Years = DatePickerInfo.BuildYears(CalendarType);
+        Years = DatePickerInfo.BuildYears(CalendarType, StartDate, ToDate);
         SetFormat(dateOfValue);
         if (AutoClose && applyAutoClose)
             hide = true;
@@ -477,15 +521,24 @@ public partial class DatePicker
                 return false;
         }
     }
+
+
 }
 internal class DatePickerInfo
 {
-    internal static List<KeyValuePair<int, string>> BuildYears(CalendarType cType, uint start = 0, uint end = 0)
+    internal static List<KeyValuePair<int, string>> BuildYears(CalendarType cType, DateTime? startdate, DateTime? enddate, uint start = 0, uint end = 0)
     {
-        if (end == 0)
+        if (enddate is not null)
+            end = (uint)enddate.Value.Year;
+        else if (end == 0)
             end = (uint)DateTime.Now.Year;
-        if (start == 0)
+
+        if (startdate is not null)
+            start = (uint)startdate.Value.Year;
+        else if (start == 0)
             start = end - 100;
+
+
 
         List<KeyValuePair<int, string>> result = new();
         for (uint i = start; i <= end; i++)

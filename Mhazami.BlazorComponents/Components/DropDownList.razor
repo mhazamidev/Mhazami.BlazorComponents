@@ -21,37 +21,39 @@
     {
         <input type="text" readonly class="mh-drp" @bind-value="@SelectedValue" @bind-value:event="oninput" @onclick="Toggle" />
     }
-   
+
     @if (!hide)
     {
-        @if (HasSearch)
-        {
-            <div class="drp-srch-box position-relative">
-                <i class="fa fa-search"></i>
-                <input type="text" class="mh-drp-search" @oninput="Search" />
-            </div>
-        }
-        <div class="mh-drp-options">
-            @if (!string.IsNullOrEmpty(DefaultTitle))
+        <div class="drp-srch-box-container">
+            @if (HasSearch)
             {
-                <div class="mh-drp-item" @onclick="SelectNull">
-                    <span>@DefaultTitle</span>
+                <div class="drp-srch-box position-relative">
+                    <i class="fa fa-search"></i>
+                    <input type="text" class="mh-drp-search" @oninput="Search" />
                 </div>
             }
-
-            @if (Items != null && Items.Any())
-            {
-                @foreach (var item in Model)
+            <div class="mh-drp-options">
+                @if (!string.IsNullOrEmpty(DefaultTitle))
                 {
-                    <div class="mh-drp-item" @onclick="()=>SelectItem(item)">
-                        @if (MultiSelect)
-                        {
-                            <input type="checkbox" disabled="@(SelectableList.Any(x=>x.Value == item.Value))" checked="@(SelectedList.Any(x => x.Value == item.Value))" />
-                        }
-                        <span>@item.Text</span>
+                    <div class="mh-drp-item" @onclick="SelectNull">
+                        <span>@DefaultTitle</span>
                     </div>
                 }
-            }
+
+                @if (Items != null && Items.Any())
+                {
+                    @foreach (var item in Model)
+                    {
+                        <div class="mh-drp-item" @onclick="()=>SelectItem(item)">
+                            @if (MultiSelect)
+                            {
+                                <input type="checkbox" disabled="@(SelectableList.Any(x=>x.Value == item.Value))" checked="@(SelectedList.Any(x => x.Value == item.Value))" />
+                            }
+                            <span>@item.Text</span>
+                        </div>
+                    }
+                }
+            </div>
         </div>
     }
 </div>
