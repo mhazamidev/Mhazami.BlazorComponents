@@ -34,7 +34,11 @@ public partial class DropDownList
         Prepare();
     }
 
-    protected override void OnParametersSet() => Prepare();
+    protected override void OnParametersSet()
+    {
+        InternalValue = Value;
+        Prepare();
+    }
 
     void Prepare()
     {
@@ -43,6 +47,8 @@ public partial class DropDownList
             if (InternalValue is not null)
                 Value = InternalValue;
             _items = new SelectList(Items, ValueField, TextField, Value);
+            if (!MultiSelect && _items.SelectedValue is null)
+                SelectedValue = string.Empty;
             if (!MultiSelect && Value is not null && _items.SelectedValue is not null)
                 SelectedValue = _items.SelectedValue.Text;
             else if (SelectedItems is not null && SelectedItems.Any())
