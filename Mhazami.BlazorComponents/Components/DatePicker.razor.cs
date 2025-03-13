@@ -30,26 +30,27 @@ public partial class DatePicker
     private string DayName = "";
     private string DayNameShort = "";
     private List<DateTime> DateOfMonth = new List<DateTime>();
-    private List<int> DisabledMonth
+    List<int> DisabledMonth = new();
+
+
+    void GenerateDisabledMonth()
     {
-        get
-        {
-            var months = new int[12] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 }.ToList();
+        if (DatePickerType != DatePickerType.Month)
+            return;
 
-            if (StartDate is null && ToDate is null)
-                return default!;
+        var months = new int[12] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 }.ToList();
 
-            if (StartDate is not null && ToDate is null)
-                return months.Where(x => x < StartDate.Value.Month).ToList();
+        if (StartDate is null && ToDate is null)
+            return;
 
-            if (StartDate is null && ToDate is not null)
-                return months.Where(x => x >= ToDate.Value.Month).ToList();
-
-            if (StartDate is not null && ToDate is not null)
-                return months.Where(x => x < StartDate.Value.Month || x >= ToDate.Value.Month).ToList();
-
-            return default!;
-        }
+        if (StartDate is not null && CurrentValue.Year == StartDate?.Year && ToDate is null)
+            DisabledMonth = months.Where(x => x < StartDate.Value.Month).ToList();
+        else if (StartDate is null && ToDate is not null && CurrentValue.Year == ToDate?.Year)
+            DisabledMonth = months.Where(x => x >= ToDate.Value.Month).ToList();
+        else if (StartDate is not null && ToDate is not null && CurrentValue.Year == StartDate?.Year && CurrentValue.Year == ToDate?.Year)
+            DisabledMonth = months.Where(x => x < StartDate.Value.Month || x >= ToDate.Value.Month).ToList();
+        else
+            DisabledMonth.Clear();
     }
     private List<DateTime> DisabledOfDates
     {
@@ -87,6 +88,7 @@ public partial class DatePicker
         StartProcess();
     }
 
+
     void StartProcess()
     {
         if (!string.IsNullOrEmpty(Value))
@@ -102,6 +104,7 @@ public partial class DatePicker
             PrepareDate(CurrentValue);
         }
         OldDate = Value;
+        GenerateDisabledMonth();
         StateHasChanged();
     }
 
@@ -347,6 +350,7 @@ public partial class DatePicker
     void ChangeMonth(int num)
     {
         CurrentValue = CurrentValue.AddMonths(num);
+        GenerateDisabledMonth();
         PrepareDate(CurrentValue, false);
     }
     async Task ChangeMonthForOnlyMonthMode(short num)
@@ -354,6 +358,7 @@ public partial class DatePicker
         var days = Enumerable.Range(1, DateTime.DaysInMonth(CurrentValue.Year, num));
         var day = days.Last() < CurrentValue.Day ? days.Last() : CurrentValue.Day;
         CurrentValue = DateTimeUtils.CreateDateFromTime(CurrentValue.Year, num, day, CurrentValue.Hour, CurrentValue.Minute, CurrentValue.Second);
+        GenerateDisabledMonth();
         PrepareDate(CurrentValue);
         await OnChangeAction.InvokeAsync(CurrentValue);
         await OnChangeActionById.InvokeAsync(new KeyValuePair<string, DateTime>(Id, CurrentValue));
@@ -362,6 +367,7 @@ public partial class DatePicker
     {
         Result = date.Date.ToShortDateString();
         CurrentValue = date;
+        GenerateDisabledMonth();
         await OnChangeAction.InvokeAsync(date);
         await OnChangeActionById.InvokeAsync(new KeyValuePair<string, DateTime>(Id, date));
         PrepareDate(CurrentValue);
@@ -370,7 +376,9 @@ public partial class DatePicker
     async Task ChangeYear(ChangeEventArgs args)
     {
         var dif = int.Parse(args.Value.ToString()) - CurrentValue.Year;
+
         CurrentValue = CurrentValue.AddYears(dif);
+        GenerateDisabledMonth();
         await OnChangeAction.InvokeAsync(CurrentValue);
         await OnChangeActionById.InvokeAsync(new KeyValuePair<string, DateTime>(Id, CurrentValue));
         PrepareDate(CurrentValue, DatePickerType == DatePickerType.Year);

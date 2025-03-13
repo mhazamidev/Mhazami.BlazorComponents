@@ -38,4 +38,10 @@ public partial class RadioButton
     }
 }
 
+public class RadioButtonItem
+{
+    public string Key { get; set; }
+    public string Value { get; set; }
+}
+
 

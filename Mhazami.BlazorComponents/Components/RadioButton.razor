@@ -4,7 +4,7 @@
         @foreach (var item in _items.Items)
         {
             <div class="mh-radio-item" @onclick="()=>OnSelect(item.Value)">
-                <input type="radio" name="@Name" value="@item.Value" checked="@(item.Value==Value)" @onchange="()=>OnSelect(item.Value)" />
+                <input type="radio" name="@Name" value="@item.Value" checked="@(item.Value.ToLower()==Value.ToLower())" @onchange="()=>OnSelect(item.Value)" />
                 <label>@item.Text</label>
             </div>
         }
