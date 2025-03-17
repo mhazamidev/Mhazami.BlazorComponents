@@ -13,6 +13,7 @@ public partial class DropDownList
     [Parameter] public string ValueField { get; set; }
     [Parameter] public string DefaultTitle { get; set; }
     [Parameter] public EventCallback<string> OnChangeAction { get; set; }
+    [Parameter] public EventCallback<KeyValuePair<string, string>> OnChangeActionById { get; set; }
     [Parameter] public EventCallback<IEnumerable<string>> OnChangeMultiAction { get; set; }
     [Parameter] public string Id { get; set; }
     [Parameter] public string CustomClass { get; set; }
@@ -92,6 +93,7 @@ public partial class DropDownList
             SelectedValue = item.Text;
             InternalValue = item.Value;
             hide = true;
+            await OnChangeActionById.InvokeAsync(new KeyValuePair<string, string>(Id, item.Value));
             await OnChangeAction.InvokeAsync(item.Value);
         }
         else
@@ -112,6 +114,7 @@ public partial class DropDownList
         SelectedValue = string.Empty;
         InternalValue = string.Empty;
         await OnChangeAction.InvokeAsync("");
+        await OnChangeActionById.InvokeAsync(new KeyValuePair<string, string>(Id, ""));
         hide = true;
     }
     bool ValidateParameters()
