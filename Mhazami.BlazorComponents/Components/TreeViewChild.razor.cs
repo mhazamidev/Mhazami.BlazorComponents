@@ -23,7 +23,7 @@ public partial class TreeViewChild
     [Parameter] public EventCallback<TreeNode> OnClick { get; set; }
     [Parameter] public EventCallback<TreeNode> OnDelete { get; set; }
     [Parameter] public EventCallback<TreeNode> ChangeSelectedNode { get; set; }
-
+    [Parameter] public bool AllowHtml { get; set; } = false;
     [Parameter] public string OnSelectedCssClass { get; set; } = "";
     [Parameter] public string Tooltip { get; set; }
     private TreeNode? SelectedNodeForDelete = null;

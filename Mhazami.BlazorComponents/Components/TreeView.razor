@@ -32,7 +32,14 @@
                             <input type="checkbox" checked="@CheckedList.Exists(x=>x.Id==node.Id)" class="mh-treeview-check form-check-input" id="@node.Id" @onchange="()=>CheckedNode(node)" />
                         }
                         <span class="mh-treeview-text @(HasOnClick?"pointer":"")" title="@Tooltip" @onclick="()=>CallOnClick(node)">
-                            @node.Title
+                            @if (!AllowHtml)
+                            {
+                                @node.Title
+                            }
+                            else 
+                            {
+                                @((MarkupString)node.Title)
+                            }
                         </span>
                         <span class="mh-treeview-window-icons-box @(node.ShowIcons&&(Updateble || Removable)?"":" tree-display-none")">
                             <span class="mh-treeview-window-icon tree-icon-edit @(Updateble?"":"tree-display-none")" @onclick="()=>UpdateNode(node)">
@@ -61,6 +68,7 @@
                                        OnClick="OnClick"
                                        @ref="childTree"
                                        Tooltip="@Tooltip"
+                                       AllowHtml="@AllowHtml"
                                        OnSelectedCssClass="@OnSelectedCssClass"
                                        ChangeSelectedNode="CallOnClick"
                                        Parent="@node.Id">

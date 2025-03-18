@@ -10,7 +10,7 @@ public partial class Home
     private List<Person> people2 = Person.Model2();
     private List<TreeNode> person = new List<TreeNode>
     {
-      new TreeNode{Id = "1", Title = "Iran",HasChildren =false},
+      new TreeNode{Id = "1", Title = "<div style='color:red;'>Iran</div>",HasChildren =false},
       new TreeNode{Id = "2",Title ="Germany",HasChildren = false},
       new TreeNode{Id = "3",Title ="Canada", HasChildren = true,Children = new List<TreeNode>
       {

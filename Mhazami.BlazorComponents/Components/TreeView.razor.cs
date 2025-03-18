@@ -22,6 +22,7 @@ public partial class TreeView
     [Parameter] public EventCallback<TreeNode> OnClick { get; set; }
     [Parameter] public EventCallback<TreeNode> OnDelete { get; set; }
     [Parameter] public string Tooltip { get; set; }
+    [Parameter] public bool AllowHtml { get; set; } = false;
     [Parameter] public string OnSelectedCssClass { get; set; } = "";
     private List<TreeNode> MainNodes = new List<TreeNode>();
     private bool OpenUpdateModal = false;

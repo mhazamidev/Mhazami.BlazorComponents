@@ -1,4 +1,6 @@
-﻿namespace Mhazami.BlazorComponents.Models;
+﻿using Microsoft.AspNetCore.Components;
+
+namespace Mhazami.BlazorComponents.Models;
 
 public record class TreeNode
 {

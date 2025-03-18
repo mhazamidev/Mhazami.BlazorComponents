@@ -5,11 +5,11 @@
 
 
 
-
+@* 
 <DatePicker DatePickerType="DatePickerType.Month"
             CalendarType="CalendarType.Turkish"
             StartDate="@(DateTime.Now)"
-            ToDate="@(DateTime.Now.AddMonths(2))" />
+            ToDate="@(DateTime.Now.AddMonths(2))" /> *@
 @* 
 <DatePicker DatePickerType="DatePickerType.Date"
             CalendarType="CalendarType.Turkish"
@@ -75,7 +75,7 @@
 </Tab>
  *@
 
-
+ 
 
 
 @*  <SwitchButton Value="true" Style="SwitchShape.circle" />
@@ -139,18 +139,14 @@
 
 
 
-@* 
+
 <div style="width:250px;margin-bottom:20px">
     <label style="padding:5px 0">Only Year Format</label>
-    <TreeView Model="@person" HasCheckBox="false" Tooltip="test" @ref="tree" >
-        <div style="width:250px;margin-bottom:20px">
-            <label style="padding:5px 0">Only Year Format</label>
-            <DropDownList Items="@people" TextField="Name" MuliSelect="true" ValueField="Id" />
-        </div>
-
+    <TreeView Model="@person" HasCheckBox="false" Tooltip="test" @ref="tree" AllowHtml="true" >
+     
     </TreeView>
     <button @onclick="Test">Refresh</button>
-</div> *@
+</div>
 
 @*
 
