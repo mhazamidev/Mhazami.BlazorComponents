@@ -101,7 +101,7 @@
                                                 else
                                                 {
                                                     var cDate = DateOfMonth[j - 1];
-                                                    @if ((StartDate != null || ToDate != null) && DisabledOfDates.Any(x => x == cDate))
+                                                    @if ((StartDate != null || ToDate != null || DisabledDates.Length > 0) && DisabledOfDates.Any(x => x.Date == cDate.Date))
                                                     {
                                                         <td class="disabled-date @(cDate.Date==Today.Date?"today":"")">
                                                             <span>

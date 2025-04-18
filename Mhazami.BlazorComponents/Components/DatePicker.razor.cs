@@ -21,6 +21,7 @@ public partial class DatePicker
     [Parameter] public CalendarType CalendarType { get; set; } = CalendarType.Gregorian;
     [Parameter] public bool AutoClose { get; set; } = true;
     [Parameter] public bool Disable { get; set; } = false;
+    [Parameter] public DateTime[] DisabledDates { get; set; } = Array.Empty<DateTime>();
 
     private bool hide = true;
     private int Year = DateTime.Now.Year;
@@ -52,23 +53,29 @@ public partial class DatePicker
         else
             DisabledMonth.Clear();
     }
+    private List<DateTime> _disabledOfDates;
     private List<DateTime> DisabledOfDates
     {
         get
         {
-            if (StartDate is null && ToDate is null)
+            if (StartDate is null && ToDate is null && DisabledDates.Length <= 0)
                 return default!;
 
+            _disabledOfDates = new List<DateTime>();
+
+            _disabledOfDates.AddRange(DisabledDates);
+
+
             if (StartDate is not null && ToDate is null)
-                return DateOfMonth.Where(x => x <= StartDate).ToList();
+                _disabledOfDates.AddRange(DateOfMonth.Where(x => x <= StartDate).ToList());
 
             if (StartDate is null && ToDate is not null)
-                return DateOfMonth.Where(x => x > ToDate).ToList();
+                _disabledOfDates.AddRange(DateOfMonth.Where(x => x > ToDate).ToList());
 
             if (StartDate is not null && ToDate is not null)
-                return DateOfMonth.Where(x => x <= StartDate || x > ToDate).ToList();
+                _disabledOfDates.AddRange(DateOfMonth.Where(x => x <= StartDate || x > ToDate).ToList());
 
-            return default!;
+            return _disabledOfDates;
         }
     }
     private KeyValuePair<int, int> EmptyDates = new KeyValuePair<int, int>();

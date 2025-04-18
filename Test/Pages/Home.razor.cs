@@ -46,6 +46,20 @@ public partial class Home
     void Test()
     {
     }
+
+    private DateTime[] DisabledDates
+    {
+        get
+        {
+            return new DateTime[]
+            {
+               DateTime.Now.AddDays(1),
+               DateTime.Now.AddDays(2),
+               DateTime.Now.AddDays(3),
+               DateTime.Now.AddDays(4),
+            };
+        }
+    }
 }
 
 

@@ -5,11 +5,12 @@
 
 
 
-@* 
-<DatePicker DatePickerType="DatePickerType.Month"
+
+<DatePicker DatePickerType="DatePickerType.DateTime"
             CalendarType="CalendarType.Turkish"
-            StartDate="@(DateTime.Now)"
-            ToDate="@(DateTime.Now.AddMonths(2))" /> *@
+            StartDate="@(DateTime.Now.AddDays(10))"
+            DisabledDates="@DisabledDates"
+            ToDate="@(DateTime.Now.AddDays(12))" />
 @* 
 <DatePicker DatePickerType="DatePickerType.Date"
             CalendarType="CalendarType.Turkish"
