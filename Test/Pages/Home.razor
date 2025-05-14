@@ -6,11 +6,12 @@
 
 
 
-<DatePicker DatePickerType="DatePickerType.DateTime"
-            CalendarType="CalendarType.Turkish"
+@* <DatePicker DatePickerType="DatePickerType.Date"
+            CalendarType="CalendarType.Shamsi"
             StartDate="@(DateTime.Now.AddDays(10))"
             DisabledDates="@DisabledDates"
-            ToDate="@(DateTime.Now.AddDays(12))" />
+            Format="dd/MM/yyyy"
+            ToDate="@(DateTime.Now.AddDays(12))" /> *@
 @* 
 <DatePicker DatePickerType="DatePickerType.Date"
             CalendarType="CalendarType.Turkish"
@@ -121,7 +122,7 @@
 
 
 
-@* <RadioButton Items="@people" Name="test" TextField="Name" ValueField="Id" OnChange="Onchecked" Value="3" /> *@
+<RadioButton Items="@people" GroupName="test" id="id" TextField="Name" ValueField="Id" OnChangeById="OnCheckedById" OnChange="Onchecked" Value="3" />
 
 @*
 <div style="width:250px;margin-bottom:20px">

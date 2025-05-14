@@ -46,7 +46,10 @@ public partial class Home
     void Test()
     {
     }
+    void OnCheckedById(KeyValuePair<string,string> data)
+    {
 
+    }
     private DateTime[] DisabledDates
     {
         get

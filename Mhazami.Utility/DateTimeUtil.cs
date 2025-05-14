@@ -165,7 +165,58 @@ namespace Mhazami.Utility
 
         }
 
+        public static string ToStringHijri(this DateTime date, string format, DaterType? daterType = null)
+        {
+            HijriCalendar hc = new();
 
+            int year = hc.GetYear(date);
+            int month = hc.GetMonth(date);
+            int day = hc.GetDayOfMonth(date);
+
+
+            var dateformat = format
+                .Replace("yyyy", year.ToString())
+                .Replace("MM", month.ToString("00"))
+                .Replace("dd", day.ToString("00"));
+
+
+
+            var timeformat = dateformat.Replace("HH", date.Hour.ToString("00"))
+            .Replace("mm", date.Minute.ToString("00"))
+            .Replace("ss", date.Second.ToString("00"));
+
+            if (daterType == DaterType.Date)
+                return dateformat.Substring(0, 10);
+
+            else
+                return timeformat;
+        }
+
+        public static string ToStringShamsi(this DateTime date, string format, DaterType? daterType = null)
+        {
+            PersianCalendar hc = new();
+
+            int year = hc.GetYear(date);
+            int month = hc.GetMonth(date);
+            int day = hc.GetDayOfMonth(date);
+
+
+            var dateformat = format
+                .Replace("yyyy", year.ToString())
+                .Replace("MM", month.ToString("00"))
+                .Replace("dd", day.ToString("00"));
+
+
+
+            var timeformat = dateformat.Replace("HH", date.Hour.ToString("00"))
+            .Replace("mm", date.Minute.ToString("00"))
+            .Replace("ss", date.Second.ToString("00"));
+
+            if (daterType == DaterType.Date)
+                return dateformat.Substring(0, 10);
+            else
+                return timeformat;
+        }
 
         public static class PersianDate
         {
@@ -686,4 +737,9 @@ namespace Mhazami.Utility
 
         }
     }
+}
+public enum DaterType
+{
+    DateTime,
+    Date,
 }

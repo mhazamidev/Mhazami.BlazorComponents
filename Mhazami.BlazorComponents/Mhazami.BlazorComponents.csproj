@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Razor">
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
 	<PropertyGroup>
 		<TargetFramework>net8.0</TargetFramework>
@@ -11,8 +11,8 @@
 		<PackageTags>Blazor Components, DatePicker,Turkish DatePicker, Shamsi DatePicker,Hijri DatePicker, German DatePicker,TreeView,DropDownList,DropDownListMultiSelect,Checkbox,CheckboxList,RadioButtom,SwitchButton,LoadingButton,Tab,ExtendedPanel,ProgressBar</PackageTags>
 		<PackAsTool>False</PackAsTool>
 		<NeutralLanguage>en</NeutralLanguage>
-		<Version>8.6.5</Version>
-		<PackageReleaseNotes>Fixed TreeView (AllowHtml Attribute)</PackageReleaseNotes>
+		<Version>8.7.3</Version>
+		<PackageReleaseNotes>Updating RaidioButton</PackageReleaseNotes>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<Title>Tafi</Title>
 		<PackageId>Tafi</PackageId>
@@ -39,7 +39,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Mhazami.Utility" Version="2.0.2" />
+		<PackageReference Include="Mhazami.Utility" Version="2.0.4" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.3" />
 	</ItemGroup>
 

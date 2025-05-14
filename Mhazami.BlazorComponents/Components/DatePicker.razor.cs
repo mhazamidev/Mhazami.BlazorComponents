@@ -22,6 +22,7 @@ public partial class DatePicker
     [Parameter] public bool AutoClose { get; set; } = true;
     [Parameter] public bool Disable { get; set; } = false;
     [Parameter] public DateTime[] DisabledDates { get; set; } = Array.Empty<DateTime>();
+    [Parameter] public string Format { get; set; } = "yyyy/MM/dd HH:mm:ss";
 
     private bool hide = true;
     private int Year = DateTime.Now.Year;
@@ -95,13 +96,12 @@ public partial class DatePicker
         StartProcess();
     }
 
-
     void StartProcess()
     {
         if (!string.IsNullOrEmpty(Value))
         {
             var dateOfValue = DateTime.Parse(Value);
-            Result = dateOfValue.Date.ToShortDateString();
+            Result = SetFormatString(dateOfValue);
             CurrentValue = dateOfValue;
             PrepareDate(dateOfValue);
         }
@@ -114,7 +114,6 @@ public partial class DatePicker
         GenerateDisabledMonth();
         StateHasChanged();
     }
-
     protected override void OnParametersSet()
     {
         if (OldDate != Value)
@@ -155,22 +154,22 @@ public partial class DatePicker
         {
             case CalendarType.Hijri:
                 HijriCalendar hc = new();
-                datetime = $"{hc.GetYear(date)}/{hc.GetMonth(date)}/{hc.GetDayOfMonth(date)} {hc.GetHour(date)}:{hc.GetMinute(date)}:{hc.GetSecond(date)}";
+                datetime = date.ToStringHijri(Format, DaterType.DateTime);
                 year = $"{hc.GetYear(date)}";
-                dates = $"{hc.GetYear(date)}/{hc.GetMonth(date)}/{hc.GetDayOfMonth(date)}";
+                dates = date.ToStringHijri(Format, DaterType.Date);
                 break;
             case CalendarType.Shamsi:
                 PersianCalendar pc = new();
-                datetime = $"{pc.GetYear(date)}/{pc.GetMonth(date)}/{pc.GetDayOfMonth(date)} {pc.GetHour(date)}:{pc.GetMinute(date)}:{pc.GetSecond(date)}";
+                datetime = date.ToStringShamsi(Format, DaterType.DateTime);
                 year = $"{pc.GetYear(date)}";
-                dates = $"{pc.GetYear(date)}/{pc.GetMonth(date)}/{pc.GetDayOfMonth(date)}";
+                dates = date.ToStringShamsi(Format, DaterType.Date);
                 break;
             case CalendarType.Turkish:
             case CalendarType.German:
             case CalendarType.Gregorian:
-                datetime = date.ToString();
+                datetime = date.ToString(Format);
                 year = $"{date.Year}";
-                dates = date.ToShortDateString();
+                dates = SetFormatString(date);
                 break;
         }
         switch (DatePickerType)
@@ -372,7 +371,7 @@ public partial class DatePicker
     }
     async Task SelectDate(DateTime date)
     {
-        Result = date.Date.ToShortDateString();
+        Result = SetFormatString(date);
         CurrentValue = date;
         GenerateDisabledMonth();
         await OnChangeAction.InvokeAsync(date);
@@ -380,6 +379,13 @@ public partial class DatePicker
         PrepareDate(CurrentValue);
     }
 
+    string SetFormatString(DateTime date)
+    {
+        if (string.IsNullOrEmpty(Format))
+            return date.Date.ToShortDateString();
+        else
+            return date.ToString(Format);
+    }
     async Task ChangeYear(ChangeEventArgs args)
     {
         var dif = int.Parse(args.Value.ToString()) - CurrentValue.Year;
@@ -594,3 +600,4 @@ internal class DatePickerInfo
         return result;
     }
 }
+
