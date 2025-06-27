@@ -48,9 +48,9 @@ public partial class DatePicker
         if (StartDate is not null && CurrentValue.Year == StartDate?.Year && ToDate is null)
             DisabledMonth = months.Where(x => x < StartDate.Value.Month).ToList();
         else if (StartDate is null && ToDate is not null && CurrentValue.Year == ToDate?.Year)
-            DisabledMonth = months.Where(x => x >= ToDate.Value.Month).ToList();
+            DisabledMonth = months.Where(x => x > ToDate.Value.Month).ToList();
         else if (StartDate is not null && ToDate is not null && CurrentValue.Year == StartDate?.Year && CurrentValue.Year == ToDate?.Year)
-            DisabledMonth = months.Where(x => x < StartDate.Value.Month || x >= ToDate.Value.Month).ToList();
+            DisabledMonth = months.Where(x => x < StartDate.Value.Month || x > ToDate.Value.Month).ToList();
         else
             DisabledMonth.Clear();
     }

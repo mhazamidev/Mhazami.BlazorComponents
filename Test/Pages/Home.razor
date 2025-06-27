@@ -3,7 +3,12 @@
 @using Mhazami.BlazorComponents.Models
 
 
-
+<DatePicker DatePickerType="DatePickerType.Month"
+            CalendarType="CalendarType.Turkish"
+            Value="@(DateTime.Now.ToString())"
+            AutoClose="true"
+            StartDate="@(new DateTime(DateTime.Now.Year, 2, 1))"
+            ToDate="@(new DateTime(DateTime.Now.Year , 12,31))"  />
 
 
 @* <DatePicker DatePickerType="DatePickerType.Date"

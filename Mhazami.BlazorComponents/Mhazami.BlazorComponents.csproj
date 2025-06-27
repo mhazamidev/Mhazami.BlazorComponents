@@ -11,8 +11,8 @@
 		<PackageTags>Blazor Components, DatePicker,Turkish DatePicker, Shamsi DatePicker,Hijri DatePicker, German DatePicker,TreeView,DropDownList,DropDownListMultiSelect,Checkbox,CheckboxList,RadioButtom,SwitchButton,LoadingButton,Tab,ExtendedPanel,ProgressBar</PackageTags>
 		<PackAsTool>False</PackAsTool>
 		<NeutralLanguage>en</NeutralLanguage>
-		<Version>8.7.3</Version>
-		<PackageReleaseNotes>Updating RaidioButton</PackageReleaseNotes>
+		<Version>8.7.4</Version>
+		<PackageReleaseNotes>Updating Datepicker</PackageReleaseNotes>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<Title>Tafi</Title>
 		<PackageId>Tafi</PackageId>
